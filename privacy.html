@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – AI Developer Cards</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="index.html" class="text-xl font-bold" style="font-family: 'Press Start 2P', monospace; color: #40256C;">AI Developer Cards</a>
+      <nav class="hidden md:flex gap-6 text-sm font-medium">
+        <a href="index.html#features" class="hover:text-indigo-600 transition">Features</a>
+        <a href="index.html#cta" class="hover:text-indigo-600 transition">Waitlist</a>
+        <a href="index.html#author" class="hover:text-indigo-600 transition">About the Author</a>
+      </nav>
+      <a href="index.html#cta" class="inline-block md:hidden bg-indigo-600 text-white px-4 py-2 rounded-xl text-sm font-semibold shadow hover:bg-indigo-500 transition">Join Waitlist</a>
+    </div>
+  </header>
+
+  <!-- Privacy Policy Content -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-6">
+      <h1 class="text-4xl font-bold mb-8 text-center">Privacy Policy</h1>
+      
+      <div class="prose prose-gray max-w-none">
+        <p class="text-gray-700 mb-6 text-center">
+          <strong>Last updated:</strong> <span id="privacy-date"></span>
+        </p>
+
+        <h2 class="text-2xl font-semibold mb-6 text-gray-900">Information We Collect</h2>
+        <p class="text-gray-700 mb-6">
+          When you join our waitlist, we collect your email address through Google Forms to notify you about AI Developer Cards availability, updates, and early-bird pricing.
+        </p>
+
+        <h2 class="text-2xl font-semibold mb-6 text-gray-900">How We Use Your Information</h2>
+        <p class="text-gray-700 mb-4">
+          Your email address is used solely to:
+        </p>
+        <ul class="text-gray-700 mb-6 list-disc list-inside ml-4">
+          <li>Send notifications about AI Developer Cards availability</li>
+          <li>Provide early-bird pricing and exclusive preview access</li>
+          <li>Share product updates and launch information</li>
+        </ul>
+
+        <h2 class="text-2xl font-semibold mb-6 text-gray-900">Third-Party Services</h2>
+        <p class="text-gray-700 mb-6">
+          We use Google Forms to collect your email address. Your data is subject to <a href="https://policies.google.com/privacy" class="text-indigo-600 hover:text-indigo-800 underline" target="_blank" rel="noopener">Google's Privacy Policy</a>. We do not sell, rent, or share your email address with other third parties.
+        </p>
+
+        <h2 class="text-2xl font-semibold mb-6 text-gray-900">Your Rights</h2>
+        <p class="text-gray-700 mb-6">
+          You can unsubscribe from our emails at any time using the unsubscribe link in any email we send you. You can also request deletion of your data by contacting us.
+        </p>
+
+        <h2 class="text-2xl font-semibold mb-6 text-gray-900">Data Retention</h2>
+        <p class="text-gray-700 mb-6">
+          We will retain your email address until you unsubscribe or request deletion, or until the AI Developer Cards project concludes.
+        </p>
+
+        <h2 class="text-2xl font-semibold mb-6 text-gray-900">Contact Us</h2>
+        <p class="text-gray-700 mb-8">
+          If you have any questions about this Privacy Policy or wish to exercise your rights, please contact us at: <a href="mailto:privacy@betterbegreat.com" class="text-indigo-600 hover:text-indigo-800 underline">privacy@betterbegreat.com</a>
+        </p>
+
+        <div class="text-center mt-12">
+          <a href="index.html" class="inline-block bg-indigo-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-indigo-500 transition">Back to Home</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-white py-10 border-t border-gray-200">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center text-sm text-gray-500">
+      <p>© <span id="year"></span>  <a href="https://betterbegreat.com" class="text-indigo-600 hover:text-indigo-800 font-semibold underline" target="_blank" rel="noopener noreferrer">better be great</a>. All rights reserved.</p>
+      <div class="flex gap-4 mt-4 sm:mt-0">
+        <a href="privacy.html" class="hover:text-indigo-600">Privacy Policy</a>
+        <!-- <a href="#" class="hover:text-indigo-600">Twitter</a>
+        <a href="#" class="hover:text-indigo-600">LinkedIn</a>
+        <a href="#" class="hover:text-indigo-600">GitHub</a> -->
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // auto-update year and privacy date
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('privacy-date').textContent = new Date().toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    });
+  </script>
+</body>
+</html>

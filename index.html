@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Developer Cards – Distilled Methods for Modern Software Engineers</title>
+  <meta name="description" content="AI Developer Cards is a tactile deck and companion app with quests, prompts, and methods to build, modernize, and ship software with AI." />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="canonical" href="https://aidevelopercards.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Developer Cards – Distilled Methods for Modern Software Engineers" />
+  <meta property="og:description" content="AI Developer Cards is a tactile deck and companion app with quests, prompts, and methods to build, modernize, and ship software with AI." />
+  <meta property="og:url" content="https://aidevelopercards.com/" />
+  <meta property="og:image" content="https://aidevelopercards.com/images/hero.webp" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Developer Cards – Distilled Methods for Modern Software Engineers" />
+  <meta name="twitter:description" content="AI Developer Cards is a tactile deck and companion app with quests, prompts, and methods to build, modernize, and ship software with AI." />
+  <meta name="twitter:image" content="https://aidevelopercards.com/images/hero.webp" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+
+  <script>
+    // Apply theme early to prevent flash of wrong theme
+    (function() {
+      var saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+    // Apply language early to prevent flash of wrong language
+    (function() {
+      var saved = localStorage.getItem('lang');
+      if (!saved) {
+        saved = (navigator.language || navigator.userLanguage || 'en').substring(0, 2) === 'de' ? 'de' : 'en';
+      }
+      document.documentElement.lang = saved;
+      document.documentElement.setAttribute('data-lang', saved);
+    })();
+  </script>
+  <style>
+    /* ── Reset & Base ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #080810;
+      --bg2:       #0E0E1A;
+      --bg3:       #14141F;
+      --surface:   #1A1A2A;
+      --border:    #2A2A3E;
+      --border2:   #3A3A5A;
+      --green:     #BEFF00;
+      --green-dim: #7AAA00;
+      --orange:    #FF6B35;
+      --blue:      #4DAFFF;
+      --text:      #E2E2F0;
+      --text-dim:  #8888A8;
+      --text-xdim: #44445A;
+      --font-display: 'Syne', sans-serif;
+      --font-mono:    'JetBrains Mono', monospace;
+    }
+
+    /* ── Light theme ──────────────────────────────────────────── */
+    [data-theme="light"] {
+      --bg:        #F4F4EF;
+      --bg2:       #EAEAE5;
+      --bg3:       #E0E0DB;
+      --surface:   #D8D8D2;
+      --border:    #CCCCC4;
+      --border2:   #B0B0A6;
+      --green:     #4A8200;
+      --green-dim: #3A6800;
+      --orange:    #D64E18;
+      --blue:      #2080D0;
+      --text:      #1A1A24;
+      --text-dim:  #5A5A72;
+      --text-xdim: #8888A0;
+    }
+
+    [data-theme="light"] body {
+      background: var(--bg);
+    }
+
+    [data-theme="light"] body::before {
+      opacity: 0.015;
+    }
+
+    [data-theme="light"] #nav {
+      background: rgba(244, 244, 239, 0.92);
+    }
+
+    [data-theme="light"] .hero-headline .line2 {
+      -webkit-text-stroke: 1px rgba(26,26,36,0.25);
+    }
+
+    [data-theme="light"] .cta-headline .ghost {
+      -webkit-text-stroke: 1px rgba(26,26,36,0.2);
+    }
+
+    [data-theme="light"] .feature-image {
+      filter: grayscale(30%) brightness(1.0);
+    }
+
+    [data-theme="light"] .feature-cell:hover .feature-image {
+      filter: grayscale(0%) brightness(1.05);
+    }
+
+    [data-theme="light"] .author-image {
+      filter: grayscale(15%);
+    }
+
+    [data-theme="light"] .author-image-label {
+      background: linear-gradient(to top, rgba(244,244,239,0.95) 0%, rgba(244,244,239,0.7) 50%, transparent 100%);
+    }
+
+    [data-theme="light"] .cta-glow {
+      background: radial-gradient(ellipse at center, rgba(74,130,0,0.07) 0%, transparent 70%);
+    }
+
+    [data-theme="light"] .deck-card:hover {
+      filter: drop-shadow(0 20px 40px rgba(74,130,0,0.18));
+    }
+
+    [data-theme="light"] .btn-primary:hover {
+      box-shadow: 0 8px 32px rgba(74,130,0,0.22);
+    }
+
+    [data-theme="light"] .quest-id {
+      background: rgba(74,130,0,0.08);
+      border-color: rgba(74,130,0,0.2);
+    }
+
+    [data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg); }
+    [data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--border2); }
+    [data-theme="light"] ::-webkit-scrollbar-thumb:hover { background: var(--text-xdim); }
+
+    /* ── Theme toggle ────────────────────────────────────────── */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border2);
+      color: var(--text-dim);
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: color 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover {
+      color: var(--text);
+      border-color: var(--text-dim);
+    }
+    .theme-toggle .icon-sun { display: none; }
+    .theme-toggle .icon-moon { display: block; }
+    [data-theme="light"] .theme-toggle .icon-sun { display: block; }
+    [data-theme="light"] .theme-toggle .icon-moon { display: none; }
+
+    /* ── Language switch ─────────────────────────────────────── */
+    .lang-switch {
+      display: flex;
+      border: 1px solid var(--border2);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      background: none;
+      border: none;
+      border-right: 1px solid var(--border2);
+      color: var(--text-xdim);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 7px 10px;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s;
+      line-height: 1;
+    }
+    .lang-btn:last-child { border-right: none; }
+    .lang-btn:hover { color: var(--text-dim); }
+    .lang-btn.active {
+      color: var(--green);
+      background: rgba(190,255,0,0.08);
+    }
+    [data-theme="light"] .lang-btn.active {
+      background: rgba(74,130,0,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── Noise texture overlay ────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.025;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── Grid background ──────────────────────────────────────── */
+    .grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* ── Typography ───────────────────────────────────────────── */
+    .display { font-family: var(--font-display); }
+
+    /* ── Nav ──────────────────────────────────────────────────── */
+    #nav {
+      position: sticky; top: 0; z-index: 1000;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8, 8, 16, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 32px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      color: var(--green);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo .bracket { color: var(--text-dim); font-weight: 400; }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--green);
+      color: var(--bg);
+      padding: 8px 20px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: #D4FF00; transform: translateY(-1px); }
+    [data-theme="light"] .nav-cta { background: var(--green); color: #fff; }
+    [data-theme="light"] .nav-cta:hover { background: #3A6800; }
+    [data-theme="light"] .btn-primary { color: #fff; }
+    [data-theme="light"] .btn-primary:hover { background: #3A6800; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── Hero ─────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 1280px; margin: 0 auto; padding: 80px 32px;
+      width: 100%;
+    }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 32px;
+    }
+    .hero-label::before {
+      content: '';
+      display: block; width: 24px; height: 1px;
+      background: var(--green);
+    }
+    .hero-label .blink {
+      display: inline-block;
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: blink 1.2s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(52px, 8vw, 112px);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      max-width: 900px;
+      margin-bottom: 40px;
+    }
+    .hero-headline .accent { color: var(--green); }
+    .hero-headline .line2 {
+      display: block;
+      -webkit-text-stroke: 1px rgba(226,226,240,0.35);
+      color: transparent;
+    }
+
+    .hero-body {
+      max-width: 560px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-dim);
+      margin-bottom: 48px;
+    }
+    .hero-body strong { color: var(--text); font-weight: 500; }
+
+    .hero-actions {
+      display: flex; align-items: center; gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--green);
+      color: var(--bg);
+      padding: 14px 32px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      background: #D4FF00;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(190,255,0,0.25);
+    }
+    .btn-ghost {
+      color: var(--text-dim);
+      font-size: 13px;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      transition: color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--text); }
+    .btn-ghost .arrow { transition: transform 0.2s; }
+    .btn-ghost:hover .arrow { transform: translateX(4px); }
+
+    /* Hero image + stats strip */
+    .hero-image-strip {
+      position: absolute;
+      right: -40px; top: 50%;
+      transform: translateY(-50%);
+      width: 480px;
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @media (max-width: 1100px) { .hero-image-strip { display: none; } }
+
+    .hero-stats {
+      margin-top: 80px;
+      display: flex; gap: 0;
+      border-top: 1px solid var(--border);
+      padding-top: 40px;
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      flex: 1; min-width: 140px;
+      padding-right: 40px;
+    }
+    .stat-item + .stat-item {
+      padding-left: 40px;
+      border-left: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 42px;
+      color: var(--green);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-xdim);
+    }
+
+    /* ── Marquee ──────────────────────────────────────────────── */
+    .marquee-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg2);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+    .marquee-track {
+      display: flex; gap: 0;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: flex; align-items: center; gap: 24px;
+      padding: 0 32px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      white-space: nowrap;
+    }
+    .marquee-item .dot {
+      width: 4px; height: 4px;
+      background: var(--green);
+      border-radius: 50%;
+    }
+
+    /* ── Section layout ───────────────────────────────────────── */
+    section { position: relative; }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      color: var(--green);
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 24px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1; max-width: 80px;
+      height: 1px; background: var(--green-dim);
+    }
+    .section-num {
+      color: var(--text-xdim);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ── Card Showcase ────────────────────────────────────────── */
+    #showcase {
+      padding: 100px 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .showcase-header {
+      padding: 0 32px;
+      max-width: 1280px; margin: 0 auto 56px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      gap: 24px; flex-wrap: wrap;
+    }
+    .showcase-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(36px, 5vw, 64px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .showcase-hint {
+      font-size: 12px;
+      color: var(--text-xdim);
+      letter-spacing: 0.06em;
+      padding-bottom: 8px;
+    }
+
+    /* Deck spread layout */
+    .deck-stage {
+      position: relative;
+      height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .deck-spread {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 0 20px;
+    }
+    .deck-card {
+      position: absolute;
+      width: 220px;
+      height: 327px; /* 220 / 0.672 */
+      perspective: 1200px;
+      cursor: pointer;
+      transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1),
+                  filter 0.4s ease;
+      transform-origin: bottom center;
+    }
+    .deck-card:hover {
+      filter: drop-shadow(0 20px 40px rgba(190, 255, 0, 0.2));
+    }
+    .deck-card-inner {
+      width: 100%; height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .deck-card.flipped .deck-card-inner { transform: rotateY(180deg); }
+    .deck-card-face {
+      position: absolute; inset: 0;
+      backface-visibility: hidden;
+      overflow: hidden;
+    }
+    .deck-card-face img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .deck-card-back-face {
+      transform: rotateY(180deg);
+    }
+
+    /* Carousel scroll strip (mobile-friendly) */
+    .card-scroll-strip {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 60px 40px;
+      display: none;
+    }
+    .card-scroll-strip::-webkit-scrollbar { display: none; }
+    .card-scroll-inner {
+      display: flex;
+      gap: 20px;
+      width: max-content;
+    }
+    .scroll-card {
+      width: 180px;
+      height: 268px;
+      flex-shrink: 0;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .scroll-card-inner {
+      width: 100%; height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .scroll-card.flipped .scroll-card-inner { transform: rotateY(180deg); }
+    .scroll-card-face {
+      position: absolute; inset: 0;
+      backface-visibility: hidden;
+      overflow: hidden;
+    }
+    .scroll-card-face img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .scroll-card-back { transform: rotateY(180deg); }
+
+    @media (max-width: 900px) {
+      .deck-stage { display: none; }
+      .card-scroll-strip { display: block; }
+    }
+
+    /* ── Features ─────────────────────────────────────────────── */
+    #features {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-left: 1px solid var(--border);
+    }
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+    .feature-cell {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .feature-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(40%) brightness(0.8);
+      transition: filter 0.4s ease;
+    }
+    .feature-cell:hover .feature-image {
+      filter: grayscale(0%) brightness(0.95);
+    }
+    .feature-body {
+      padding: 32px;
+    }
+    .feature-num {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+    .feature-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .feature-desc {
+      font-size: 13px;
+      line-height: 1.8;
+      color: var(--text-dim);
+    }
+
+    /* ── Quest Map ────────────────────────────────────────────── */
+    #quests {
+      padding: 100px 0;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+    .quest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      margin-top: 56px;
+    }
+    @media (max-width: 768px) {
+      .quest-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .quest-grid { grid-template-columns: 1fr; }
+    }
+    .quest-card {
+      background: var(--bg2);
+      padding: 32px;
+      transition: background 0.25s;
+      cursor: default;
+    }
+    .quest-card:hover { background: var(--bg3); }
+    .quest-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .quest-id {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--green);
+      background: rgba(190,255,0,0.08);
+      padding: 4px 10px;
+      border: 1px solid rgba(190,255,0,0.2);
+    }
+    .quest-count {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--text-xdim);
+    }
+    .quest-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .quest-desc {
+      font-size: 12px;
+      line-height: 1.7;
+      color: var(--text-dim);
+    }
+
+    /* ── CTA ──────────────────────────────────────────────────── */
+    #cta {
+      padding: 120px 0;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+    }
+    .cta-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse at center, rgba(190,255,0,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-content {
+      position: relative; z-index: 1;
+      text-align: center;
+    }
+    .cta-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(40px, 6vw, 80px);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+    .cta-headline .ghost {
+      -webkit-text-stroke: 1px rgba(226,226,240,0.25);
+      color: transparent;
+    }
+    .cta-sub {
+      font-size: 14px;
+      line-height: 1.8;
+      color: var(--text-dim);
+      max-width: 480px;
+      margin: 0 auto 48px;
+    }
+    .cta-perks {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .cta-perk {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+    .cta-perk::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+    }
+    .cta-note {
+      margin-top: 20px;
+      font-size: 11px;
+      color: var(--text-xdim);
+    }
+    .cta-note a {
+      color: var(--text-dim);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ── Author ───────────────────────────────────────────────── */
+    #author {
+      padding: 100px 0;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+    .author-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .author-grid { grid-template-columns: 1fr; gap: 48px; }
+    }
+    .author-image-wrap {
+      position: relative;
+    }
+    .author-image {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(20%);
+      border: 1px solid var(--border2);
+    }
+    .author-image-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(8,8,16,0.9) 0%, transparent 100%);
+      padding: 40px 24px 24px;
+    }
+    .author-name-tag {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+    .author-content {}
+    .author-headline {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      margin-top: 16px;
+    }
+    .author-bio {
+      font-size: 14px;
+      line-height: 1.9;
+      color: var(--text-dim);
+      margin-bottom: 32px;
+    }
+    .author-creds {
+      display: flex; flex-direction: column;
+      gap: 12px;
+    }
+    .author-cred {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .author-cred .cred-icon {
+      color: var(--green);
+      flex-shrink: 0;
+      margin-top: 2px;
+      font-size: 12px;
+    }
+
+    .author-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 80px 0;
+    }
+    .author-grid.author-grid--reverse {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (min-width: 901px) {
+      .author-grid.author-grid--reverse .author-image-wrap { order: 2; }
+      .author-grid.author-grid--reverse .author-content { order: 1; }
+    }
+
+    /* ── Footer ───────────────────────────────────────────────── */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-left {
+      font-size: 12px;
+      color: var(--text-xdim);
+    }
+    .footer-left a {
+      color: var(--green-dim);
+      text-decoration: none;
+    }
+    .footer-left a:hover { color: var(--green); }
+    .footer-links {
+      display: flex; gap: 24px;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-xdim);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text-dim); }
+
+    /* ── Intersection animations ──────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Scrollbar ────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border2); }
+    ::-webkit-scrollbar-thumb:hover { background: var(--text-xdim); }
+
+    /* ── Mobile ──────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      /* Nav: shrink logo, prevent overflow */
+      .nav-inner { padding: 0 16px; height: 56px; overflow: hidden; }
+      .nav-logo { font-size: 11px; gap: 6px; min-width: 0; overflow: hidden; }
+      .nav-cta { font-size: 11px; padding: 6px 14px; }
+      .marquee-strip { overflow: hidden; }
+
+      /* Hero */
+      .hero-headline {
+        font-size: clamp(36px, 10vw, 52px);
+        margin-bottom: 24px;
+      }
+      .hero-content { padding: 48px 20px; }
+      .hero-label { margin-bottom: 20px; font-size: 10px; }
+      .hero-body { font-size: 13px; margin-bottom: 32px; }
+      .hero-actions { flex-direction: column; align-items: stretch; gap: 12px; }
+      .hero-actions .btn-primary { text-align: center; padding: 14px 24px; font-size: 12px; }
+      .hero-actions .btn-ghost { justify-content: center; }
+
+      /* Stats: 2×2 grid */
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        margin-top: 48px;
+        padding-top: 32px;
+      }
+      .stat-item {
+        padding: 16px 0;
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .stat-item + .stat-item { padding-left: 0; border-left: none; }
+      .stat-item:nth-child(even) {
+        padding-left: 24px;
+        border-left: 1px solid var(--border);
+      }
+      .stat-item:nth-child(n+3) { border-bottom: none; }
+      .stat-num { font-size: 32px; }
+
+      /* Sections: tighter padding */
+      .container { padding: 0 20px; }
+      #showcase { padding: 64px 0; }
+      .showcase-header { padding: 0 20px; margin-bottom: 32px; flex-direction: column; align-items: flex-start; gap: 8px; }
+      .showcase-title { font-size: clamp(28px, 8vw, 48px); }
+
+      /* Features */
+      #features { padding: 64px 0; }
+
+      /* Quests */
+      #quests { padding: 64px 0; }
+
+      /* CTA */
+      #cta { padding: 80px 0; }
+      .cta-headline { font-size: clamp(32px, 9vw, 48px); }
+      .cta-sub { font-size: 13px; }
+      .cta-perks {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 0 20px;
+      }
+      .cta-perks .cta-perk { text-align: left; }
+      #cta .btn-primary { font-size: 13px; padding: 16px 32px; }
+
+      /* Author */
+      #author { padding: 64px 0; }
+      .author-grid { gap: 32px; }
+      .author-image { aspect-ratio: 4/3; }
+      .author-headline { font-size: clamp(28px, 7vw, 40px); }
+      .author-bio { font-size: 13px; }
+      .author-divider { margin: 48px 0; }
+      .author-grid.author-grid--reverse { grid-template-columns: 1fr; }
+
+      /* Footer */
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-headline { font-size: clamp(28px, 9vw, 40px); }
+      .hero-content { padding: 40px 16px; }
+      .container { padding: 0 16px; }
+      .showcase-header { padding: 0 16px; }
+      .nav-cta { display: none; }
+      .lang-btn { padding: 7px 8px; font-size: 10px; }
+      .stat-num { font-size: 28px; }
+      .feature-body { padding: 24px 20px; }
+      .quest-card { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────────────── -->
+  <header id="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo display">
+        <span class="bracket">[</span>ai_developer_cards<span class="bracket">]</span>
+      </a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#showcase" data-i18n="nav.cards">Cards</a></li>
+          <li><a href="#features" data-i18n="nav.features">Features</a></li>
+          <li><a href="#quests" data-i18n="nav.quests">Quests</a></li>
+          <li><a href="#author" data-i18n="nav.authors">Authors</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div class="lang-switch" id="langSwitch">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+          <span class="icon-sun">&#9788;</span>
+          <span class="icon-moon">&#9790;</span>
+        </button>
+        <a href="https://forms.gle/LMWPBnCgWmkw1Wav5" target="_blank" rel="noopener noreferrer" class="nav-cta" data-i18n="nav.cta">
+          join waitlist
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section id="hero">
+    <div class="grid-bg"></div>
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="blink"></span>
+        session://ai-developer-cards
+      </div>
+
+      <h1 class="hero-headline display">
+        build_better<br>
+        <span class="accent">software</span>
+        <span class="line2">with_AI</span>
+      </h1>
+
+      <p class="hero-body" data-i18n-html="hero.body">
+        <strong>9 quests. 45+ methods.</strong> One physical card deck.<br>
+        Prompts, patterns &amp; mental models that move the needle —
+        from <strong>vibe_prototyping</strong> to <strong>production_hardening</strong>.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://forms.gle/LMWPBnCgWmkw1Wav5" target="_blank" rel="noopener noreferrer" class="btn-primary display">
+          $ join_waitlist --early-access
+        </a>
+        <a href="#showcase" class="btn-ghost">
+          ls ./cards <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item reveal">
+          <div class="stat-num display">9</div>
+          <div class="stat-label" data-i18n="hero.stat.quests">quests</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-1">
+          <div class="stat-num display">45+</div>
+          <div class="stat-label" data-i18n="hero.stat.methods">methods</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-2">
+          <div class="stat-num display">100+</div>
+          <div class="stat-label" data-i18n="hero.stat.workshops">workshops</div>
+        </div>
+        <div class="stat-item reveal reveal-delay-3">
+          <div class="stat-num display">1</div>
+          <div class="stat-label" data-i18n="hero.stat.deck">card deck</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ───────────────────────────────────────────────── -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- Two copies for seamless loop -->
+      <div class="marquee-item"><span class="dot"></span> Vibe Prototyping</div>
+      <div class="marquee-item"><span class="dot"></span> Reverse Requirements</div>
+      <div class="marquee-item"><span class="dot"></span> Context Engineering</div>
+      <div class="marquee-item"><span class="dot"></span> Multi-Agent Collaboration</div>
+      <div class="marquee-item"><span class="dot"></span> LLM Runbooks</div>
+      <div class="marquee-item"><span class="dot"></span> Self-Healing Systems</div>
+      <div class="marquee-item"><span class="dot"></span> AI Security Review</div>
+      <div class="marquee-item"><span class="dot"></span> Legacy Modernization</div>
+      <div class="marquee-item"><span class="dot"></span> Vibe Prototyping</div>
+      <div class="marquee-item"><span class="dot"></span> Reverse Requirements</div>
+      <div class="marquee-item"><span class="dot"></span> Context Engineering</div>
+      <div class="marquee-item"><span class="dot"></span> Multi-Agent Collaboration</div>
+      <div class="marquee-item"><span class="dot"></span> LLM Runbooks</div>
+      <div class="marquee-item"><span class="dot"></span> Self-Healing Systems</div>
+      <div class="marquee-item"><span class="dot"></span> AI Security Review</div>
+      <div class="marquee-item"><span class="dot"></span> Legacy Modernization</div>
+    </div>
+  </div>
+
+  <!-- ── CARD SHOWCASE ─────────────────────────────────────────── -->
+  <section id="showcase">
+    <div class="showcase-header">
+      <div>
+        <div class="section-label">
+          <span class="section-num">&gt;</span> ls ./cards/ --flip
+        </div>
+        <h2 class="showcase-title display reveal" data-i18n="showcase.title">
+          The deck.
+        </h2>
+      </div>
+      <p class="showcase-hint reveal" data-i18n="showcase.hint">click to flip · hover to inspect</p>
+    </div>
+
+    <!-- Desktop: fan spread -->
+    <div class="deck-stage" id="deckStage">
+      <div class="deck-spread" id="deckSpread">
+        <!-- JS renders cards here -->
+      </div>
+    </div>
+
+    <!-- Mobile: horizontal scroll -->
+    <div class="card-scroll-strip" id="cardScroll">
+      <div class="card-scroll-inner" id="cardScrollInner">
+        <!-- JS renders here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ──────────────────────────────────────────────── -->
+  <section id="features">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="section-num">&gt;</span> cat features.txt
+      </div>
+      <h2 class="display reveal" style="font-weight:800; font-size: clamp(36px,5vw,60px); letter-spacing:-0.02em; line-height:1; margin-bottom: 0;" data-i18n-html="features.headline">
+        Cheat codes that survived 100+ workshops.<br>
+        <span style="color: var(--text-dim); font-size: 0.7em; font-weight: 600;">Zero fluff.</span>
+      </h2>
+    </div>
+    <div class="features-grid" style="margin-top: 56px;">
+
+      <div class="feature-cell reveal">
+        <img src="images/cards.webp" alt="Physical Cards" class="feature-image" />
+        <div class="feature-body">
+          <div class="feature-num">01 // tactile_box_set</div>
+          <h3 class="feature-title display" data-i18n="features.f1.title">Large-format physical cards</h3>
+          <p class="feature-desc" data-i18n="features.f1.desc">Premium card stock, oversized format. 9 quest cards and 45+ method cards covering every scenario from first prototype to production hardening.</p>
+        </div>
+      </div>
+
+      <div class="feature-cell reveal reveal-delay-1">
+        <img src="images/app.webp" alt="App Version" class="feature-image" />
+        <div class="feature-body">
+          <div class="feature-num">02 // companion_app</div>
+          <h3 class="feature-title display" data-i18n="features.f2.title">Interactive digital deck</h3>
+          <p class="feature-desc" data-i18n="features.f2.desc">Tutorial videos, learning games, extended prompts, and skill assessments — amplify every card with the companion app.</p>
+        </div>
+      </div>
+
+      <div class="feature-cell reveal reveal-delay-2">
+        <img src="images/edge.webp" alt="Cutting Edge" class="feature-image" />
+        <div class="feature-body">
+          <div class="feature-num">03 // always_current</div>
+          <h3 class="feature-title display" data-i18n="features.f3.title">Evergreen knowledge base</h3>
+          <p class="feature-desc" data-i18n="features.f3.desc">Constant app updates and discounted booster packs keep your toolbox aligned with the latest LLM capabilities, toolchains, and best practices.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── QUESTS ─────────────────────────────────────────────────── -->
+  <section id="quests">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="section-num">&gt;</span> ./quest_map --list --all
+      </div>
+      <h2 class="display reveal" style="font-weight:800; font-size: clamp(36px,5vw,60px); letter-spacing:-0.02em; line-height:1; max-width: 700px;" data-i18n="quests.title">
+        The quest map.
+      </h2>
+      <p class="reveal" style="font-size:14px; color: var(--text-dim); max-width: 520px; margin-top: 16px; line-height: 1.8;" data-i18n="quests.desc">
+        Each quest is a focused mission — a curated sequence of methods from problem to production.
+      </p>
+    </div>
+
+    <div class="container">
+      <div class="quest-grid">
+
+        <div class="quest-card reveal">
+          <div class="quest-card-header">
+            <span class="quest-id">Q0</span>
+            <span class="quest-count" data-i18n="quests.q0.count">5 methods</span>
+          </div>
+          <h3 class="quest-title display">vibe_prototyping</h3>
+          <p class="quest-desc" data-i18n="quests.q0.desc">Go from napkin sketch to working demo before the meeting ends. Speed is the feature.</p>
+        </div>
+
+        <div class="quest-card reveal reveal-delay-1">
+          <div class="quest-card-header">
+            <span class="quest-id">Q1</span>
+            <span class="quest-count" data-i18n="quests.q1.count">5 methods</span>
+          </div>
+          <h3 class="quest-title display">greenfield_mvp</h3>
+          <p class="quest-desc" data-i18n="quests.q1.desc">Ship a real product, not a toy. Structure, tests, and architecture from day one.</p>
+        </div>
+
+        <div class="quest-card reveal reveal-delay-2">
+          <div class="quest-card-header">
+            <span class="quest-id">Q2</span>
+            <span class="quest-count" data-i18n="quests.q2.count">5 methods</span>
+          </div>
+          <h3 class="quest-title display">ai_enabled_systems</h3>
+          <p class="quest-desc" data-i18n="quests.q2.desc">Build software that treats LLMs as first-class components, not bolted-on afterthoughts.</p>
+        </div>
+
+        <div class="quest-card reveal">
+          <div class="quest-card-header">
+            <span class="quest-id">Q3</span>
+            <span class="quest-count" data-i18n="quests.q3.count">5 methods</span>
+          </div>
+          <h3 class="quest-title display">production_grade</h3>
+          <p class="quest-desc" data-i18n="quests.q3.desc">Make it survive real users, real traffic, and real attacks. No more "works on my machine."</p>
+        </div>
+
+        <div class="quest-card reveal reveal-delay-1">
+          <div class="quest-card-header">
+            <span class="quest-id">Q4</span>
+            <span class="quest-count" data-i18n="quests.q4.count">5 methods</span>
+          </div>
+          <h3 class="quest-title display">legacy_modernization</h3>
+          <p class="quest-desc" data-i18n="quests.q4.desc">Strangle the monolith slice by slice. Modernize legacy systems safely — zero downtime, zero rewrites.</p>
+        </div>
+
+        <div class="quest-card reveal reveal-delay-2">
+          <div class="quest-card-header">
+            <span class="quest-id">Q5</span>
+            <span class="quest-count" data-i18n="quests.q5.count">5 methods</span>
+          </div>
+          <h3 class="quest-title display">agentic_coding</h3>
+          <p class="quest-desc" data-i18n="quests.q5.desc">Stop typing, start directing. Hand the keyboard to an AI agent and orchestrate the output.</p>
+        </div>
+
+        <div class="quest-card reveal">
+          <div class="quest-card-header">
+            <span class="quest-id">Q6</span>
+            <span class="quest-count" data-i18n="quests.q6.count">5 methods</span>
+          </div>
+          <h3 class="quest-title display">multi_agent_coding</h3>
+          <p class="quest-desc" data-i18n="quests.q6.desc">One agent is fast. Multiple agents in parallel are a force multiplier.</p>
+        </div>
+
+        <div class="quest-card reveal reveal-delay-1">
+          <div class="quest-card-header">
+            <span class="quest-id">Q7</span>
+            <span class="quest-count" data-i18n="quests.q7.count">5 methods</span>
+          </div>
+          <h3 class="quest-title display">reinforcement_loop</h3>
+          <p class="quest-desc" data-i18n="quests.q7.desc">Every session makes the next one better. Compound your AI's knowledge of your codebase.</p>
+        </div>
+
+        <div class="quest-card reveal reveal-delay-2">
+          <div class="quest-card-header">
+            <span class="quest-id">Q8</span>
+            <span class="quest-count" data-i18n="quests.q8.count">5 methods</span>
+          </div>
+          <h3 class="quest-title display">ai_software_hardening</h3>
+          <p class="quest-desc" data-i18n="quests.q8.desc">Compliance, quality gates, and self-healing. Ship AI-generated code you'd bet your SLA on.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ───────────────────────────────────────────────────── -->
+  <section id="cta">
+    <div class="cta-glow"></div>
+    <div class="container cta-content">
+      <div class="section-label reveal" style="justify-content: center;">
+        <span class="section-num">&gt;</span> ./waitlist.sh --register
+      </div>
+      <h2 class="cta-headline display reveal" data-i18n-html="cta.headline">
+        Be first <span class="ghost">in line.</span>
+      </h2>
+      <p class="cta-sub reveal" data-i18n="cta.sub">
+        Early-bird pricing, beta app access, and an exclusive preview PDF — no spam, unsubscribe any time.
+      </p>
+      <div class="cta-perks reveal">
+        <span class="cta-perk" data-i18n="cta.perk1">Early-bird pricing on the physical deck</span>
+        <span class="cta-perk" data-i18n="cta.perk2">Beta access to the companion app</span>
+        <span class="cta-perk" data-i18n="cta.perk3">Exclusive preview PDF</span>
+        <span class="cta-perk" data-i18n="cta.perk4">No spam — unsubscribe any time</span>
+      </div>
+      <a href="https://forms.gle/LMWPBnCgWmkw1Wav5" target="_blank" rel="noopener noreferrer" class="btn-primary display reveal" style="font-size: 15px; padding: 18px 48px;">
+        $ join_waitlist --early-access
+      </a>
+      <p class="cta-note reveal" data-i18n-html="cta.note">
+        By joining, you agree to our <a href="privacy.html">Privacy Policy</a>. Data collected via Google Forms.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── AUTHOR ────────────────────────────────────────────────── -->
+  <section id="author">
+    <div class="container">
+      <div class="section-label reveal">
+        <span class="section-num">&gt;</span> whoami
+      </div>
+      <div class="author-grid">
+        <div class="author-image-wrap reveal">
+          <img src="images/author.webp" alt="Ingo Eichhorst" class="author-image" />
+          <div class="author-image-label">
+            <div class="author-name-tag">ingo_eichhorst // ai_architect</div>
+          </div>
+        </div>
+        <div class="author-content reveal reveal-delay-1">
+          <div class="section-label">&gt; cat bio_ingo.txt</div>
+          <h2 class="author-headline display" data-i18n-html="author1.headline">15+ years.<br>One playbook.</h2>
+          <p class="author-bio" data-i18n="author1.bio">
+            AI architect, CTO, and engineering trainer at a leading hyperscaler.
+            Beta tester for GitHub Copilot and GPT-3 in 2021 — it clicked immediately.
+            After training thousands of developers across Europe and collecting countless
+            feedback loops, I distilled what actually moves the needle.
+            These cards are the playbook I wish I had from day one.
+          </p>
+          <div class="author-creds">
+            <div class="author-cred">
+              <span class="cred-icon">&rarr;</span>
+              <span data-i18n="author1.cred1">100+ AI developer workshops delivered across Europe</span>
+            </div>
+            <div class="author-cred">
+              <span class="cred-icon">&rarr;</span>
+              <span data-i18n="author1.cred2">Open-source contributor &amp; university lecturer</span>
+            </div>
+            <div class="author-cred">
+              <span class="cred-icon">&rarr;</span>
+              <span data-i18n="author1.cred3">Speaker at betterCode(), AI Camp &amp; IT-Tage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="author-divider" />
+
+      <div class="author-grid author-grid--reverse">
+        <div class="author-image-wrap reveal">
+          <img src="images/ralf.webp" alt="Ralf D. Müller" class="author-image" />
+          <div class="author-image-label">
+            <div class="author-name-tag">ralf_d_mueller // software_architect</div>
+          </div>
+        </div>
+        <div class="author-content reveal reveal-delay-1">
+          <div class="section-label">&gt; cat bio_ralf.txt</div>
+          <h2 class="author-headline display" data-i18n-html="author2.headline">25+ years.<br>Docs as Code.</h2>
+          <p class="author-bio" data-i18n="author2.bio">
+            Software architect, arc42 &amp; docToolchain creator, and GenAI pioneer.
+            Co-host of Software-Architektur.TV and CPSA-A certified trainer at socreatory.
+            After 25+ years in software development, Ralf bridges the gap between
+            architecture documentation and modern AI-assisted workflows &mdash; teaching
+            teams to speak the same language as their LLMs through semantic anchors.
+          </p>
+          <div class="author-creds">
+            <div class="author-cred">
+              <span class="cred-icon">&rarr;</span>
+              <span data-i18n="author2.cred1">Creator of docToolchain &amp; arc42 template maintainer</span>
+            </div>
+            <div class="author-cred">
+              <span class="cred-icon">&rarr;</span>
+              <span data-i18n="author2.cred2">Co-host Software-Architektur.TV &amp; GenAI trainer at socreatory</span>
+            </div>
+            <div class="author-cred">
+              <span class="cred-icon">&rarr;</span>
+              <span data-i18n="author2.cred3">Published in iX Magazine on AI in software architecture</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────── -->
+  <footer>
+    <div class="container footer-inner">
+      <p class="footer-left" data-i18n-html="footer.copy">
+        &gt; &copy; <span id="year"></span>
+        <a href="https://betterbegreat.com" target="_blank" rel="noopener noreferrer">better_be_great</a>.
+        All rights reserved.
+      </p>
+      <ul class="footer-links">
+        <li><a href="privacy.html" data-i18n="footer.privacy">./privacy</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Translations ──────────────────────────────────────────────
+    var TRANSLATIONS = {
+      en: {
+        '_title': 'AI Developer Cards \u2013 Distilled Methods for Modern Software Engineers',
+        'nav.cards': 'Cards',
+        'nav.features': 'Features',
+        'nav.quests': 'Quests',
+        'nav.authors': 'Authors',
+        'nav.cta': 'join waitlist',
+        'hero.body': '<strong>9 quests. 45+ methods.</strong> One physical card deck.<br>Prompts, patterns &amp; mental models that move the needle \u2014 from <strong>vibe_prototyping</strong> to <strong>production_hardening</strong>.',
+        'hero.stat.quests': 'quests',
+        'hero.stat.methods': 'methods',
+        'hero.stat.workshops': 'workshops',
+        'hero.stat.deck': 'card deck',
+        'showcase.title': 'The deck.',
+        'showcase.hint': 'click to flip \u00b7 hover to inspect',
+        'features.headline': 'Cheat codes that survived 100+ workshops.<br><span style="color: var(--text-dim); font-size: 0.7em; font-weight: 600;">Zero fluff.</span>',
+        'features.f1.title': 'Large-format physical cards',
+        'features.f1.desc': 'Premium card stock, oversized format. 9 quest cards and 45+ method cards covering every scenario from first prototype to production hardening.',
+        'features.f2.title': 'Interactive digital deck',
+        'features.f2.desc': 'Tutorial videos, learning games, extended prompts, and skill assessments \u2014 amplify every card with the companion app.',
+        'features.f3.title': 'Evergreen knowledge base',
+        'features.f3.desc': 'Constant app updates and discounted booster packs keep your toolbox aligned with the latest LLM capabilities, toolchains, and best practices.',
+        'quests.title': 'The quest map.',
+        'quests.desc': 'Each quest is a focused mission \u2014 a curated sequence of methods from problem to production.',
+        'quests.q0.count': '5 methods',
+        'quests.q0.desc': 'Go from napkin sketch to working demo before the meeting ends. Speed is the feature.',
+        'quests.q1.count': '5 methods',
+        'quests.q1.desc': 'Ship a real product, not a toy. Structure, tests, and architecture from day one.',
+        'quests.q2.count': '5 methods',
+        'quests.q2.desc': 'Build software that treats LLMs as first-class components, not bolted-on afterthoughts.',
+        'quests.q3.count': '5 methods',
+        'quests.q3.desc': 'Make it survive real users, real traffic, and real attacks. No more \u201cworks on my machine.\u201d',
+        'quests.q4.count': '5 methods',
+        'quests.q4.desc': 'Strangle the monolith slice by slice. Modernize legacy systems safely \u2014 zero downtime, zero rewrites.',
+        'quests.q5.count': '5 methods',
+        'quests.q5.desc': 'Stop typing, start directing. Hand the keyboard to an AI agent and orchestrate the output.',
+        'quests.q6.count': '5 methods',
+        'quests.q6.desc': 'One agent is fast. Multiple agents in parallel are a force multiplier.',
+        'quests.q7.count': '5 methods',
+        'quests.q7.desc': 'Every session makes the next one better. Compound your AI\u2019s knowledge of your codebase.',
+        'quests.q8.count': '5 methods',
+        'quests.q8.desc': 'Compliance, quality gates, and self-healing. Ship AI-generated code you\u2019d bet your SLA on.',
+        'cta.headline': 'Be first <span class="ghost">in line.</span>',
+        'cta.sub': 'Early-bird pricing, beta app access, and an exclusive preview PDF \u2014 no spam, unsubscribe any time.',
+        'cta.perk1': 'Early-bird pricing on the physical deck',
+        'cta.perk2': 'Beta access to the companion app',
+        'cta.perk3': 'Exclusive preview PDF',
+        'cta.perk4': 'No spam \u2014 unsubscribe any time',
+        'cta.note': 'By joining, you agree to our <a href="privacy.html">Privacy Policy</a>. Data collected via Google Forms.',
+        'author1.headline': '15+ years.<br>One playbook.',
+        'author1.bio': 'AI architect, CTO, and engineering trainer at a leading hyperscaler. Beta tester for GitHub Copilot and GPT-3 in 2021 \u2014 it clicked immediately. After training thousands of developers across Europe and collecting countless feedback loops, I distilled what actually moves the needle. These cards are the playbook I wish I had from day one.',
+        'author1.cred1': '100+ AI developer workshops delivered across Europe',
+        'author1.cred2': 'Open-source contributor & university lecturer',
+        'author1.cred3': 'Speaker at betterCode(), AI Camp & IT-Tage',
+        'author2.headline': '25+ years.<br>Docs as Code.',
+        'author2.bio': 'Software architect, arc42 & docToolchain creator, and GenAI pioneer. Co-host of Software-Architektur.TV and CPSA-A certified trainer at socreatory. After 25+ years in software development, Ralf bridges the gap between architecture documentation and modern AI-assisted workflows \u2014 teaching teams to speak the same language as their LLMs through semantic anchors.',
+        'author2.cred1': 'Creator of docToolchain & arc42 template maintainer',
+        'author2.cred2': 'Co-host Software-Architektur.TV & GenAI trainer at socreatory',
+        'author2.cred3': 'Published in iX Magazine on AI in software architecture',
+        'footer.copy': '&gt; &copy; <span id="year">' + new Date().getFullYear() + '</span> <a href="https://betterbegreat.com" target="_blank" rel="noopener noreferrer">better_be_great</a>. All rights reserved.',
+        'footer.privacy': './privacy'
+      },
+      de: {
+        '_title': 'AI Developer Cards \u2013 Destillierte Methoden f\u00fcr moderne Software-Engineers',
+        'nav.cards': 'Karten',
+        'nav.features': 'Features',
+        'nav.quests': 'Quests',
+        'nav.authors': 'Autoren',
+        'nav.cta': 'Warteliste',
+        'hero.body': '<strong>9 Quests. 45+ Methoden.</strong> Ein physisches Kartendeck.<br>Prompts, Patterns &amp; Denkmodelle, die den Unterschied machen \u2014 von <strong>vibe_prototyping</strong> bis <strong>production_hardening</strong>.',
+        'hero.stat.quests': 'Quests',
+        'hero.stat.methods': 'Methoden',
+        'hero.stat.workshops': 'Workshops',
+        'hero.stat.deck': 'Kartendeck',
+        'showcase.title': 'Das Deck.',
+        'showcase.hint': 'Klicken zum Umdrehen \u00b7 Hover zum Inspizieren',
+        'features.headline': 'Cheat Codes, die 100+ Workshops überlebt haben.<br><span style="color: var(--text-dim); font-size: 0.7em; font-weight: 600;">Zero Fluff.</span>',
+        'features.f1.title': 'Physische Karten im Gro\u00dfformat',
+        'features.f1.desc': 'Premium-Karton, \u00dcberformat. 9 Quest-Karten und 45+ Methoden-Karten f\u00fcr jedes Szenario \u2014 vom ersten Prototyp bis zum Production Hardening.',
+        'features.f2.title': 'Interaktives digitales Deck',
+        'features.f2.desc': 'Tutorial-Videos, Lernspiele, erweiterte Prompts und Skill-Assessments \u2014 verst\u00e4rke jede Karte mit der Companion-App.',
+        'features.f3.title': 'Immer aktuelle Wissensbasis',
+        'features.f3.desc': 'Regelm\u00e4\u00dfige App-Updates und verg\u00fcnstigte Booster-Packs halten deine Toolbox auf dem neuesten Stand der LLM-F\u00e4higkeiten, Toolchains und Best Practices.',
+        'quests.title': 'Die Quest-Map.',
+        'quests.desc': 'Jeder Quest ist eine fokussierte Mission \u2014 eine kuratierte Abfolge von Methoden vom Problem zur Produktion.',
+        'quests.q0.count': '5 Methoden',
+        'quests.q0.desc': 'Von der Skizze zum funktionierenden Demo, bevor das Meeting endet. Geschwindigkeit ist das Feature.',
+        'quests.q1.count': '5 Methoden',
+        'quests.q1.desc': 'Ein echtes Produkt liefern, kein Spielzeug. Struktur, Tests und Architektur vom ersten Tag an.',
+        'quests.q2.count': '5 Methoden',
+        'quests.q2.desc': 'Software bauen, die LLMs als First-Class-Komponenten behandelt \u2014 nicht als nachtr\u00e4gliche Erg\u00e4nzung.',
+        'quests.q3.count': '5 Methoden',
+        'quests.q3.desc': 'F\u00fcr echte Nutzer, echten Traffic und echte Angriffe gewappnet. Schluss mit \u201eL\u00e4uft bei mir.\u201c',
+        'quests.q4.count': '5 Methoden',
+        'quests.q4.desc': 'Den Monolithen St\u00fcck f\u00fcr St\u00fcck abl\u00f6sen. Legacy-Systeme sicher modernisieren \u2014 ohne Downtime, ohne Rewrites.',
+        'quests.q5.count': '5 Methoden',
+        'quests.q5.desc': 'Aufh\u00f6ren zu tippen, anfangen zu dirigieren. \u00dcbergib die Tastatur an einen KI-Agenten und orchestriere das Ergebnis.',
+        'quests.q6.count': '5 Methoden',
+        'quests.q6.desc': 'Ein Agent ist schnell. Mehrere Agenten parallel sind ein Force Multiplier.',
+        'quests.q7.count': '5 Methoden',
+        'quests.q7.desc': 'Jede Session macht die n\u00e4chste besser. Kumuliere das Wissen deiner KI \u00fcber deine Codebase.',
+        'quests.q8.count': '5 Methoden',
+        'quests.q8.desc': 'Compliance, Quality Gates und Self-Healing. KI-generierten Code liefern, auf den du dein SLA wetten w\u00fcrdest.',
+        'cta.headline': 'Sei ganz vorne <span class="ghost">dabei.</span>',
+        'cta.sub': 'Early-Bird-Preise, Beta-Zugang zur App und ein exklusives Preview-PDF \u2014 kein Spam, jederzeit abbestellbar.',
+        'cta.perk1': 'Early-Bird-Preise f\u00fcr das physische Deck',
+        'cta.perk2': 'Beta-Zugang zur Companion-App',
+        'cta.perk3': 'Exklusives Preview-PDF',
+        'cta.perk4': 'Kein Spam \u2014 jederzeit abbestellbar',
+        'cta.note': 'Mit der Anmeldung stimmst du unserer <a href="privacy.html">Datenschutzerkl\u00e4rung</a> zu. Daten werden \u00fcber Google Forms erhoben.',
+        'author1.headline': '15+ Jahre.<br>Ein Playbook.',
+        'author1.bio': 'KI-Architekt, CTO und Engineering-Trainer bei einem f\u00fchrenden Hyperscaler. Beta-Tester f\u00fcr GitHub Copilot und GPT-3 seit 2021 \u2014 es hat sofort Klick gemacht. Nach dem Training von tausenden Entwicklern in ganz Europa und unz\u00e4hligen Feedback-Schleifen habe ich destilliert, was wirklich den Unterschied macht. Diese Karten sind das Playbook, das ich mir von Anfang an gew\u00fcnscht h\u00e4tte.',
+        'author1.cred1': '100+ KI-Entwickler-Workshops in ganz Europa',
+        'author1.cred2': 'Open-Source-Contributor & Hochschuldozent',
+        'author1.cred3': 'Speaker bei betterCode(), AI Camp & IT-Tage',
+        'author2.headline': '25+ Jahre.<br>Docs as Code.',
+        'author2.bio': 'Software-Architekt, arc42- & docToolchain-Entwickler und GenAI-Pionier. Co-Host von Software-Architektur.TV und CPSA-A-zertifizierter Trainer bei socreatory. Nach 25+ Jahren in der Softwareentwicklung schl\u00e4gt Ralf die Br\u00fccke zwischen Architekturdokumentation und modernen KI-gest\u00fctzten Workflows \u2014 und bringt Teams bei, die gleiche Sprache wie ihre LLMs zu sprechen.',
+        'author2.cred1': 'Entwickler von docToolchain & arc42-Template-Maintainer',
+        'author2.cred2': 'Co-Host Software-Architektur.TV & GenAI-Trainer bei socreatory',
+        'author2.cred3': 'Ver\u00f6ffentlichungen im iX-Magazin zu KI in der Software-Architektur',
+        'footer.copy': '&gt; &copy; <span id="year">' + new Date().getFullYear() + '</span> <a href="https://betterbegreat.com" target="_blank" rel="noopener noreferrer">better_be_great</a>. Alle Rechte vorbehalten.',
+        'footer.privacy': './datenschutz'
+      }
+    };
+
+    // ── Language management ─────────────────────────────────────
+    function setLanguage(lang) {
+      if (!TRANSLATIONS[lang]) lang = 'en';
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-lang', lang);
+      localStorage.setItem('lang', lang);
+
+      var t = TRANSLATIONS[lang];
+
+      // Update page title
+      document.title = t['_title'];
+
+      // Update all data-i18n elements (textContent)
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // Update all data-i18n-html elements (innerHTML)
+      document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n-html');
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      // Update active button
+      document.querySelectorAll('.lang-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+      });
+    }
+
+    // Determine initial language
+    var initialLang = localStorage.getItem('lang');
+    if (!initialLang) {
+      initialLang = (navigator.language || navigator.userLanguage || 'en').substring(0, 2) === 'de' ? 'de' : 'en';
+    }
+    setLanguage(initialLang);
+
+    // Language switch buttons
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setLanguage(this.getAttribute('data-lang'));
+      });
+    });
+
+    // ── Card data ────────────────────────────────────────────────
+    const CARDS = [
+      // Quest 0 – Vibe Prototyping (1 quest + 5 methods)
+      { id: 'q0',       front: 'cards/q0_front.webp',       back: 'cards/q0_back.webp' },
+      { id: '0a0-v0_1', front: 'cards/0a0-v0_1-front.webp', back: 'cards/0a0-v0_1-back.webp' },
+      { id: '0a1-v0_1', front: 'cards/0a1-v0_1-front.webp', back: 'cards/0a1-v0_1-back.webp' },
+      { id: '0a2-v0_1', front: 'cards/0a2-v0_1-front.webp', back: 'cards/0a2-v0_1-back.webp' },
+      { id: '0c0-v0_1', front: 'cards/0c0-v0_1-front.webp', back: 'cards/0c0-v0_1-back.webp' },
+      { id: '0c1-v0_1', front: 'cards/0c1-v0_1-front.webp', back: 'cards/0c1-v0_1-back.webp' },
+      // (Quest 2 – AI-Enabled Systems cards removed)
+      // Quest 3 – Agentic Coding (1 quest + 3 methods)
+      { id: 'q3',       front: 'cards/q3_front.webp',       back: 'cards/q3_back.webp' },
+      { id: '5a0-v0_1', front: 'cards/5a0-v0_1-front.webp', back: 'cards/5a0-v0_1-back.webp' },
+      { id: '5c0-v0_1', front: 'cards/5c0-v0_1-front.webp', back: 'cards/5c0-v0_1-back.webp' },
+      { id: '5d0-v0_1', front: 'cards/5d0-v0_1-front.webp', back: 'cards/5d0-v0_1-back.webp' },
+    ];
+
+    // ── Desktop fan spread ───────────────────────────────────────
+    function buildDeckSpread() {
+      const spread = document.getElementById('deckSpread');
+      if (!spread) return;
+      const n = CARDS.length;
+      const totalAngle = 36; // degrees from first to last
+      const spreadRadius = 600;
+
+      CARDS.forEach((card, i) => {
+        const fraction = n > 1 ? i / (n - 1) : 0.5;
+        const angle = -totalAngle / 2 + fraction * totalAngle;
+        const xOffset = (fraction - 0.5) * 700;
+        const yOffset = Math.abs(fraction - 0.5) * 80;
+
+        const el = document.createElement('div');
+        el.className = 'deck-card';
+        el.style.cssText = `
+          transform: translateX(${xOffset}px) translateY(${yOffset}px) rotate(${angle}deg);
+          z-index: ${i + 1};
+        `;
+        el.innerHTML = `
+          <div class="deck-card-inner">
+            <div class="deck-card-face">
+              <img src="${card.front}" alt="Card front" loading="lazy">
+            </div>
+            <div class="deck-card-face deck-card-back-face">
+              <img src="${card.back}" alt="Card back" loading="lazy">
+            </div>
+          </div>
+        `;
+
+        el.addEventListener('click', () => {
+          el.classList.toggle('flipped');
+        });
+
+        el.addEventListener('mouseenter', () => {
+          el.style.transform = `translateX(${xOffset}px) translateY(${yOffset - 40}px) rotate(${angle * 0.3}deg) scale(1.12)`;
+          el.style.zIndex = 100;
+          const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+          el.style.filter = isLight
+            ? 'drop-shadow(0 24px 48px rgba(74,130,0,0.18))'
+            : 'drop-shadow(0 24px 48px rgba(190,255,0,0.18))';
+        });
+        el.addEventListener('mouseleave', () => {
+          el.style.transform = `translateX(${xOffset}px) translateY(${yOffset}px) rotate(${angle}deg)`;
+          el.style.zIndex = i + 1;
+          el.style.filter = '';
+        });
+
+        spread.appendChild(el);
+      });
+    }
+
+    // ── Mobile scroll strip ──────────────────────────────────────
+    function buildScrollStrip() {
+      const inner = document.getElementById('cardScrollInner');
+      if (!inner) return;
+
+      CARDS.forEach(card => {
+        const el = document.createElement('div');
+        el.className = 'scroll-card';
+        el.innerHTML = `
+          <div class="scroll-card-inner">
+            <div class="scroll-card-face">
+              <img src="${card.front}" alt="Card front" loading="lazy">
+            </div>
+            <div class="scroll-card-face scroll-card-back">
+              <img src="${card.back}" alt="Card back" loading="lazy">
+            </div>
+          </div>
+        `;
+        el.addEventListener('click', () => el.classList.toggle('flipped'));
+        inner.appendChild(el);
+      });
+    }
+
+    buildDeckSpread();
+    buildScrollStrip();
+
+    // ── Intersection observer for reveal animations ──────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // Make hero stats immediately visible (above fold)
+    document.querySelectorAll('#hero .reveal').forEach(el => {
+      el.classList.add('visible');
+    });
+
+    // ── Theme toggle ───────────────────────────────────────────
+    const themeToggle = document.getElementById('themeToggle');
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      setTheme(current === 'light' ? 'dark' : 'light');
+    });
+
+    // Listen for OS-level theme changes (only when user hasn't manually chosen)
+    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        document.documentElement.setAttribute('data-theme', e.matches ? 'light' : 'dark');
+      }
+    });
+  </script>
+</body>
+</html>
