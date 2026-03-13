@@ -15,6 +15,12 @@
   <meta property="og:description" content="AI Developer Cards is a tactile deck and companion app with quests, prompts, and methods to build, modernize, and ship software with AI." />
   <meta property="og:url" content="https://aidevelopercards.com/" />
   <meta property="og:image" content="https://aidevelopercards.com/images/hero.webp" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AI Developer Cards — physical card deck for software engineers" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="de_DE" />
+  <meta property="og:site_name" content="AI Developer Cards" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AI Developer Cards – Distilled Methods for Modern Software Engineers" />
   <meta name="twitter:description" content="AI Developer Cards is a tactile deck and companion app with quests, prompts, and methods to build, modernize, and ship software with AI." />
@@ -42,8 +48,12 @@
         "url": "https://betterbegreat.com",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://aidevelopercards.com/images/hero.webp"
+          "url": "https://aidevelopercards.com/favicon.ico"
         },
+        "sameAs": [
+          "https://betterbegreat.com"
+        ],
+        "email": "privacy@betterbegreat.com",
         "founder": [
           {
             "@id": "https://aidevelopercards.com/#ingo-eichhorst"
@@ -59,12 +69,21 @@
         "name": "Ingo Eichhorst",
         "jobTitle": "AI Architect & CTO",
         "description": "AI architect, CTO, and engineering trainer at a leading hyperscaler. Beta tester for GitHub Copilot and GPT-3 in 2021. After training thousands of developers across Europe, he distilled what actually moves the needle into AI Developer Cards.",
+        "url": "https://ingo-eichhorst.de",
+        "sameAs": [
+          "https://www.linkedin.com/in/ingo-eichhorst-4354aa153",
+          "https://github.com/ingo-eichhorst",
+          "https://ingo-eichhorst.de"
+        ],
         "knowsAbout": [
           "AI-assisted software development",
           "Prompt engineering",
           "Developer training",
           "Software architecture"
         ],
+        "affiliation": {
+          "@id": "https://aidevelopercards.com/#organization"
+        },
         "image": "https://aidevelopercards.com/images/author.webp"
       },
       {
@@ -73,6 +92,11 @@
         "name": "Ralf D. Mueller",
         "jobTitle": "Software Architect",
         "description": "Software architect, arc42 and docToolchain creator, and GenAI pioneer. Co-host of Software-Architektur.TV and CPSA-A certified trainer at socreatory. 25+ years in software development, bridging architecture documentation and modern AI-assisted workflows.",
+        "sameAs": [
+          "https://doctoolchain.org",
+          "https://arc42.org",
+          "https://software-architektur.tv"
+        ],
         "knowsAbout": [
           "Software architecture",
           "Documentation as Code",
@@ -80,13 +104,17 @@
           "Generative AI",
           "docToolchain"
         ],
+        "affiliation": {
+          "@id": "https://aidevelopercards.com/#organization"
+        },
         "image": "https://aidevelopercards.com/images/ralf.webp"
       },
       {
         "@type": "WebPage",
         "@id": "https://aidevelopercards.com/#webpage",
         "url": "https://aidevelopercards.com/",
-        "name": "AI Developer Cards -- Distilled Methods for Modern Software Engineers",
+        "name": "AI Developer Cards \u2013 Distilled Methods for Modern Software Engineers",
+        "dateModified": "2026-03-13",
         "description": "AI Developer Cards is a tactile deck and companion app with quests, prompts, and methods to build, modernize, and ship software with AI.",
         "isPartOf": {
           "@id": "https://aidevelopercards.com/#website"
@@ -101,7 +129,12 @@
         "@id": "https://aidevelopercards.com/#product",
         "name": "AI Developer Cards",
         "description": "A tactile card deck and companion app with 9 quests, 45+ methods, prompts, patterns, and mental models for building, modernizing, and shipping software with AI. Covering vibe prototyping, greenfield MVP, AI-enabled systems, production hardening, legacy modernization, agentic coding, multi-agent coding, reinforcement loops, and AI software hardening.",
-        "image": "https://aidevelopercards.com/images/hero.webp",
+        "image": [
+          "https://aidevelopercards.com/images/hero.webp",
+          "https://aidevelopercards.com/images/cards.webp",
+          "https://aidevelopercards.com/images/app.webp"
+        ],
+        "url": "https://aidevelopercards.com/",
         "brand": {
           "@id": "https://aidevelopercards.com/#organization"
         },
@@ -110,7 +143,17 @@
           "@type": "Audience",
           "audienceType": "Software Engineers and Developers"
         },
-        "additionalType": "https://schema.org/PreOrder"
+        "offers": {
+          "@type": "Offer",
+          "url": "https://aidevelopercards.com/",
+          "priceCurrency": "EUR",
+          "price": "0",
+          "availability": "https://schema.org/PreOrder",
+          "priceValidUntil": "2026-12-31",
+          "seller": {
+            "@id": "https://aidevelopercards.com/#organization"
+          }
+        }
       },
       {
         "@type": "BreadcrumbList",
@@ -173,7 +216,7 @@
             "name": "When will AI Developer Cards be available?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "AI Developer Cards are currently in pre-launch. Join the waitlist to receive early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF."
+              "text": "AI Developer Cards are currently in pre-launch. Waitlist members receive 48-hour early access before any public announcement. Join to get early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF as soon as the deck ships."
             }
           }
         ]
@@ -185,6 +228,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uQ.woff2" crossorigin>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
@@ -210,6 +254,16 @@
     })();
   </script>
   <style>
+    /* ── Font fallback (reduces CLS from Syne font swap) ─────── */
+    @font-face {
+      font-family: 'Syne-fallback';
+      src: local('Arial');
+      size-adjust: 105%;
+      ascent-override: 92%;
+      descent-override: normal;
+      line-gap-override: normal;
+    }
+
     /* ── Reset & Base ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -226,7 +280,7 @@
       --text:      #E2E2F0;
       --text-dim:  #8888A8;
       --text-xdim: #44445A;
-      --font-display: 'Syne', sans-serif;
+      --font-display: 'Syne', 'Syne-fallback', sans-serif;
       --font-mono:    'JetBrains Mono', monospace;
     }
 
@@ -455,8 +509,44 @@
     [data-theme="light"] .btn-primary { color: #fff; }
     [data-theme="light"] .btn-primary:hover { background: #3A6800; }
 
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: 1px solid var(--border2);
+      color: var(--text-dim);
+      width: 36px; height: 36px;
+      align-items: center; justify-content: center;
+      cursor: pointer; font-size: 18px;
+      flex-shrink: 0;
+    }
+    .nav-hamburger:hover { color: var(--text); border-color: var(--text-dim); }
+    .nav-mobile-menu {
+      display: none;
+      position: absolute; top: 64px; left: 0; right: 0;
+      background: rgba(8, 8, 16, 0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      z-index: 999;
+      padding: 16px 32px;
+    }
+    .nav-mobile-menu.open { display: block; }
+    .nav-mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+    .nav-mobile-menu ul a {
+      display: block;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .nav-mobile-menu ul a:hover { color: var(--text); }
+    [data-theme="light"] .nav-mobile-menu { background: rgba(244, 244, 239, 0.97); }
     @media (max-width: 900px) {
       .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
     }
 
     /* ── Hero ─────────────────────────────────────────────────── */
@@ -1207,6 +1297,42 @@
 </head>
 <body>
 
+  <!-- Static content for crawlers that don't execute JavaScript -->
+  <noscript>
+    <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+      <h1>AI Developer Cards — build better software with AI</h1>
+      <p>AI Developer Cards is a physical card deck and companion app created by Ingo Eichhorst and Ralf D. Mueller that teaches 45+ methods for AI-assisted software development across 9 structured learning quests. Developed from insights gathered across 100+ developer workshops, the cards cover methodologies from vibe prototyping and prompt engineering to multi-agent coding and AI software hardening.</p>
+      <h2>9 Quests, 45+ Methods</h2>
+      <ul>
+        <li>Q0: Vibe Prototyping (5 methods) — Go from napkin sketch to working demo before the meeting ends. Speed is the feature.</li>
+        <li>Q1: Greenfield MVP (5 methods) — Ship a real product, not a toy. Structure, tests, and architecture from day one.</li>
+        <li>Q2: AI-Enabled Systems (5 methods) — Build software that treats LLMs as first-class components, not bolted-on afterthoughts.</li>
+        <li>Q3: Production Grade (5 methods) — Make it survive real users, real traffic, and real attacks.</li>
+        <li>Q4: Legacy Modernization (5 methods) — Strangle the monolith slice by slice. Modernize legacy systems safely — zero downtime, zero rewrites.</li>
+        <li>Q5: Agentic Coding (5 methods) — Stop typing, start directing. Hand the keyboard to an AI agent and orchestrate the output.</li>
+        <li>Q6: Multi-Agent Coding (5 methods) — One agent is fast. Multiple agents in parallel are a force multiplier.</li>
+        <li>Q7: Reinforcement Loop (5 methods) — Every session makes the next one better. Compound your AI's knowledge of your codebase.</li>
+        <li>Q8: AI Software Hardening (5 methods) — Compliance, quality gates, and self-healing. Ship AI-generated code you'd bet your SLA on.</li>
+      </ul>
+      <h2>Authors</h2>
+      <p>Ingo Eichhorst: AI architect, CTO, and engineering trainer. Beta tester for GitHub Copilot and GPT-3 in 2021. Delivered 100+ AI developer workshops across Europe. Speaker at betterCode(), AI Camp and IT-Tage. Website: https://ingo-eichhorst.de</p>
+      <p>Ralf D. Mueller: Software architect, creator of docToolchain and arc42 template maintainer. Co-host of Software-Architektur.TV and CPSA-A certified trainer at socreatory. Published in iX Magazine on AI in software architecture. Websites: https://doctoolchain.org, https://arc42.org, https://software-architektur.tv</p>
+      <h2>Frequently Asked Questions</h2>
+      <h3>I already use AI coding tools every day — what am I actually missing?</h3>
+      <p>Most developers have mastered the basics: autocomplete, Q&amp;A, simple refactoring. What breaks down is knowing which method to reach for at each stage — when to vibe-prototype vs. harden production code, how to engineer context for consistent results, how to chain methods across a full workflow. AI Developer Cards map 45+ methods across 9 progression stages, distilled from 100+ workshops, so you always know the right move — not just the right prompt.</p>
+      <h3>What did running 100+ developer workshops reveal?</h3>
+      <p>A consistent pattern: developers kept reinventing the same mental models from scratch. After 100+ AI coding workshops across Europe, Ingo Eichhorst and Ralf D. Mueller noticed that the gap wasn't in AI capability — it was in structured methodology. Most teams got stuck cycling between basic autocomplete and ad-hoc prompting with no clear progression. That insight became the blueprint for the 9 quests and 45+ methods in the deck.</p>
+      <h3>What AI coding methods do the cards cover?</h3>
+      <p>The deck covers 45+ methods across 9 quests: vibe prototyping, greenfield MVP development, AI-enabled systems, production hardening, legacy modernization, agentic coding, multi-agent coding, reinforcement loops, and AI software hardening. Each method card includes specific prompts, patterns, and mental models for applying AI tools in real development scenarios.</p>
+      <h3>Who are AI Developer Cards for?</h3>
+      <p>AI Developer Cards are designed for software engineers and developers who want to use AI tools effectively across the full software development lifecycle — from rapid prototyping to production hardening. They are especially useful for developers attending AI coding workshops, team leads introducing AI practices to their teams, and self-learners who want structured guidance beyond basic code completion.</p>
+      <h3>What is included in the card deck?</h3>
+      <p>The physical card deck includes 9 quest cards and 45+ method cards in a premium oversized format. It comes with access to the companion app, which provides tutorial videos, learning games, extended prompts, and skill assessments to amplify every card.</p>
+      <h3>When will AI Developer Cards be available?</h3>
+      <p>AI Developer Cards are currently in pre-launch. Waitlist members will receive early access before the public launch. Sign up at https://aidevelopercards.com/ to join the waitlist and receive early-bird pricing.</p>
+    </div>
+  </noscript>
+
   <!-- ── NAV ──────────────────────────────────────────────────── -->
   <header id="nav">
     <div class="nav-inner">
@@ -1233,8 +1359,18 @@
         <a href="https://forms.gle/LMWPBnCgWmkw1Wav5" target="_blank" rel="noopener noreferrer" class="nav-cta" data-i18n="nav.cta">
           join waitlist
         </a>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false">&#9776;</button>
       </div>
     </div>
+    <nav class="nav-mobile-menu" id="navMobileMenu" aria-label="Mobile navigation">
+      <ul>
+        <li><a href="#showcase" data-i18n="nav.cards">Cards</a></li>
+        <li><a href="#features" data-i18n="nav.features">Features</a></li>
+        <li><a href="#quests" data-i18n="nav.quests">Quests</a></li>
+        <li><a href="#author" data-i18n="nav.authors">Authors</a></li>
+        <li><a href="https://forms.gle/LMWPBnCgWmkw1Wav5" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">join waitlist</a></li>
+      </ul>
+    </nav>
   </header>
 
   <!-- ── HERO ─────────────────────────────────────────────────── -->
@@ -1643,7 +1779,7 @@
         </div>
         <div class="faq-item reveal">
           <h3 class="faq-q" data-i18n="faq.q6">When will AI Developer Cards be available?</h3>
-          <p class="faq-a" data-i18n="faq.a6">AI Developer Cards are currently in pre-launch. Join the waitlist to receive early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF.</p>
+          <p class="faq-a" data-i18n="faq.a6">AI Developer Cards are currently in pre-launch. Waitlist members receive 48-hour early access before any public announcement. Join above to get early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF as soon as the deck ships.</p>
         </div>
       </div>
     </div>
@@ -1659,13 +1795,32 @@
       </p>
       <ul class="footer-links">
         <li><a href="privacy.html" data-privacy data-i18n="footer.privacy">./privacy</a></li>
-        <li><a href="impressum.html" data-i18n="footer.impressum">./impressum</a></li>
+        <li><a href="#" data-impressum data-i18n="footer.impressum">./impressum</a></li>
       </ul>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ── Hamburger nav ─────────────────────────────────────────────
+    (function() {
+      var btn = document.getElementById('navHamburger');
+      var menu = document.getElementById('navMobileMenu');
+      if (!btn || !menu) return;
+      btn.addEventListener('click', function() {
+        var open = menu.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        btn.innerHTML = open ? '&#10005;' : '&#9776;';
+      });
+      menu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          menu.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.innerHTML = '&#9776;';
+        }
+      });
+    })();
 
     // ── Translations ──────────────────────────────────────────────
     var TRANSLATIONS = {
@@ -1743,7 +1898,7 @@
         'faq.q5': 'What is included in the card deck?',
         'faq.a5': 'The physical card deck includes 9 quest cards and 45+ method cards in a premium oversized format. It comes with access to the companion app, which provides tutorial videos, learning games, extended prompts, and skill assessments to amplify every card.',
         'faq.q6': 'When will AI Developer Cards be available?',
-        'faq.a6': 'AI Developer Cards are currently in pre-launch. Join the waitlist to receive early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF.'
+        'faq.a6': 'AI Developer Cards are currently in pre-launch. Waitlist members receive 48-hour early access before any public announcement. Join above to get early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF as soon as the deck ships.'
       },
       de: {
         '_title': 'AI Developer Cards \u2013 Destillierte Methoden f\u00fcr moderne Software-Engineers',
@@ -2044,7 +2199,7 @@
   </div>
 
   <style>
-    #privacy-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    #privacy-modal, #impressum-modal { position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 24px; }
     .pm-backdrop { position: absolute; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); }
     .pm-panel {
       position: relative; z-index: 1;
@@ -2100,6 +2255,78 @@
       });
 
       window.openPrivacyModal = openPrivacyModal;
+    })();
+  </script>
+
+  <!-- ── IMPRESSUM MODAL ───────────────────────────────────────── -->
+  <div id="impressum-modal" role="dialog" aria-modal="true" aria-label="Impressum" style="display:none">
+    <div class="pm-backdrop"></div>
+    <div class="pm-panel">
+      <button class="pm-close" aria-label="Close">&times;</button>
+
+      <div class="pm-lang" data-lang-block="en">
+        <p class="pm-label">&gt; cat impressum.txt</p>
+        <h2 class="pm-title">Legal Notice</h2>
+        <h3>Provider</h3>
+        <p>Ingo Eichhorst<br>Better Be Great (sole proprietor)<br>Goethestraße 55h<br>15566 Schöneiche<br>Germany</p>
+        <h3>Contact</h3>
+        <p>Email: <a href="mailto:support@betterbegreat.com">support@betterbegreat.com</a></p>
+        <h3>VAT ID</h3>
+        <p>VAT identification number pursuant to § 27 a of the German VAT Act: DE 339 584 597</p>
+        <h3>Responsible for content (§ 55 para. 2 RStV)</h3>
+        <p>Ingo Eichhorst<br>Goethestraße 55h<br>15566 Schöneiche</p>
+        <h3>Disclaimer</h3>
+        <p>The contents of this website have been prepared with the greatest possible care. However, no guarantee can be given for the accuracy, completeness, or timeliness of the content.</p>
+        <h3>Copyright</h3>
+        <p>The content and works on these pages are subject to German copyright law. Copies are permitted for private, non-commercial use only.</p>
+      </div>
+
+      <div class="pm-lang" data-lang-block="de">
+        <p class="pm-label">&gt; cat impressum.txt</p>
+        <h2 class="pm-title">Impressum</h2>
+        <h3>Angaben gemäß § 5 TMG</h3>
+        <p>Ingo Eichhorst<br>Better Be Great (Inh. Ingo Eichhorst)<br>Goethestraße 55h<br>15566 Schöneiche<br>Deutschland</p>
+        <h3>Kontakt</h3>
+        <p>E-Mail: <a href="mailto:support@betterbegreat.com">support@betterbegreat.com</a></p>
+        <h3>Umsatzsteuer-ID</h3>
+        <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: DE 339 584 597</p>
+        <h3>Verantwortlicher i.S.d. § 55 Abs. 2 RStV</h3>
+        <p>Ingo Eichhorst<br>Goethestraße 55h<br>15566 Schöneiche</p>
+        <h3>Haftungsausschluss</h3>
+        <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden.</p>
+        <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        <h3>Urheberrecht</h3>
+        <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      var modal = document.getElementById('impressum-modal');
+
+      function openImpressumModal() {
+        var lang = document.documentElement.getAttribute('data-lang') || 'en';
+        modal.querySelectorAll('.pm-lang').forEach(function(el) {
+          el.classList.toggle('active', el.getAttribute('data-lang-block') === lang);
+        });
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeImpressumModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+
+      modal.querySelector('.pm-close').addEventListener('click', closeImpressumModal);
+      modal.querySelector('.pm-backdrop').addEventListener('click', closeImpressumModal);
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeImpressumModal(); });
+
+      document.addEventListener('click', function(e) {
+        var a = e.target.closest('a[data-impressum]');
+        if (a) { e.preventDefault(); openImpressumModal(); }
+      });
     })();
   </script>
 </body>
