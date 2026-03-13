@@ -34,3 +34,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Notify IndexNow
+        run: |
+          curl -s "https://api.indexnow.org/indexnow?url=https://aidevelopercards.com/&key=f47ac10b58cc4372a5670e02b2c3d479"
