@@ -1,0 +1,25 @@
+# AI Developer Cards
+
+> AI Developer Cards is a physical card deck and companion app with 45+ methods across 9 quests for AI-assisted software development. Created by Ingo Eichhorst and Ralf D. Mueller.
+
+## About
+AI Developer Cards teaches modern software engineers how to build, modernize, and ship software using AI coding agents, prompt engineering patterns, and structured development methodologies. Developed from insights gathered across 100+ developer workshops.
+
+## Topics Covered
+- Vibe Prototyping: Rapid AI-assisted prototyping methods
+- Greenfield MVP: Structured AI-first project setup
+- AI-Enabled Systems: LLMs as first-class software components
+- Production Grade: Hardening AI-generated code for production
+- Legacy Modernization: AI-assisted strangler pattern for legacy systems
+- Agentic Coding: Single AI agent orchestration
+- Multi-Agent Coding: Parallel AI agent workflows
+- Reinforcement Loop: Compounding AI context across sessions
+- AI Software Hardening: Compliance and quality gates for AI code
+
+## Authors
+- Ingo Eichhorst: AI architect, CTO, engineering trainer, 100+ AI workshops, GitHub Copilot beta tester (2021)
+- Ralf D. Mueller: Software architect, docToolchain creator, arc42 maintainer, Software-Architektur.TV co-host, iX Magazine author
+
+## Links
+- Website: https://aidevelopercards.com
+- Company: https://betterbegreat.com
