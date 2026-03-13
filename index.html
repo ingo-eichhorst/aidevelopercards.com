@@ -231,7 +231,8 @@
   <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/syne/v22/8vIS7w4qzmVxsWxjBZRjr0FKM_04uQ.woff2" crossorigin>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.counter.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://counter.dev https://forms.gle; frame-src https://docs.google.com https://forms.gle;" />
+  <script src="https://cdn.counter.dev/script.js" data-id="2d845c2a-ed61-4410-8850-e6339766176f" data-utcoffset="1" defer></script>
 
   <script>
     // Apply theme early to prevent flash of wrong theme
@@ -1293,6 +1294,45 @@
       .feature-body { padding: 24px 20px; }
       .quest-card { padding: 24px 20px; }
     }
+
+    /* ── Consent Banner ───────────────────────────────────────── */
+    .pm-consent-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 24px;
+      background: var(--bg3);
+      border-top: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+    .pm-consent-banner p { flex: 1; }
+    .pm-consent-banner a { color: var(--green); text-decoration: none; }
+    .pm-consent-banner a:hover { text-decoration: underline; }
+    .pm-btn {
+      flex-shrink: 0;
+      background: transparent;
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 8px 16px;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      transition: background 0.15s, color 0.15s;
+    }
+    .pm-btn:hover { background: var(--green); color: var(--bg); }
+    @media (max-width: 600px) {
+      .pm-consent-banner { flex-direction: column; align-items: flex-start; padding: 14px 16px; }
+    }
   </style>
 </head>
 <body>
@@ -2172,6 +2212,8 @@
         <p>When you join our waitlist, we collect your email address through Google Forms to notify you about AI Developer Cards availability, updates, and early-bird pricing.</p>
         <h3>How We Use Your Information</h3>
         <p>Your email is used solely to send notifications about availability, early-bird pricing, and product updates. We do not sell or share it with third parties.</p>
+        <h3>Analytics</h3>
+        <p>We use <a href="https://counter.dev" target="_blank" rel="noopener">counter.dev</a> to understand how visitors use our site. counter.dev collects no personal data and sets no cookies. It is open-source (AGPL-v3), made in Berlin, and privacy-friendly by design.</p>
         <h3>Third-Party Services</h3>
         <p>We use Google Forms. Your data is subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
         <h3>Your Rights</h3>
@@ -2188,6 +2230,8 @@
         <p>Wenn du dich in die Warteliste einträgst, erheben wir deine E-Mail-Adresse über Google Forms, um dich über Verfügbarkeit, Updates und Early-Bird-Preise zu informieren.</p>
         <h3>Verwendung deiner Daten</h3>
         <p>Deine E-Mail wird ausschließlich für Benachrichtigungen zu Verfügbarkeit, Early-Bird-Preisen und Produkt-Updates genutzt. Wir verkaufen oder teilen sie nicht mit Dritten.</p>
+        <h3>Analyse</h3>
+        <p>Wir verwenden <a href="https://counter.dev" target="_blank" rel="noopener">counter.dev</a>, um zu verstehen, wie Besucher unsere Website nutzen. counter.dev erhebt keine personenbezogenen Daten und setzt keine Cookies. Es ist Open-Source (AGPL-v3), made in Berlin und von Grund auf datenschutzfreundlich.</p>
         <h3>Drittanbieter</h3>
         <p>Wir nutzen Google Forms. Deine Daten unterliegen der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzrichtlinie von Google</a>.</p>
         <h3>Deine Rechte</h3>
@@ -2328,6 +2372,28 @@
         if (a) { e.preventDefault(); openImpressumModal(); }
       });
     })();
+  </script>
+
+  <!-- Cookie/Analytics Consent Banner -->
+  <div id="consent-banner" class="pm-consent-banner" style="display:none">
+    <p>
+      No cookies. No tracking. Just vibes.<br>
+      We count visits with <a href="https://counter.dev" target="_blank" rel="noopener">counter.dev</a> —
+      open-source, cookieless analytics made in Berlin, EU. Your data stays sovereign.
+      <a href="#" data-privacy>Privacy policy</a>
+    </p>
+    <button onclick="acceptConsent()" class="pm-btn">ACK</button>
+  </div>
+  <script>
+    (function() {
+      if (!localStorage.getItem('consent-acknowledged')) {
+        document.getElementById('consent-banner').style.display = 'flex';
+      }
+    })();
+    function acceptConsent() {
+      localStorage.setItem('consent-acknowledged', '1');
+      document.getElementById('consent-banner').style.display = 'none';
+    }
   </script>
 </body>
 </html>
