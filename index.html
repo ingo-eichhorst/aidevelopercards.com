@@ -38,7 +38,7 @@
       {
         "@type": "Organization",
         "@id": "https://aidevelopercards.com/#organization",
-        "name": "better_be_great",
+        "name": "Better Be Great",
         "url": "https://betterbegreat.com",
         "logo": {
           "@type": "ImageObject",
@@ -110,11 +110,7 @@
           "@type": "Audience",
           "audienceType": "Software Engineers and Developers"
         },
-        "offers": {
-          "@type": "Offer",
-          "availability": "https://schema.org/PreOrder",
-          "url": "https://aidevelopercards.com/#cta"
-        }
+        "additionalType": "https://schema.org/PreOrder"
       },
       {
         "@type": "BreadcrumbList",
@@ -394,6 +390,9 @@
       pointer-events: none;
     }
 
+    /* ── Accessibility ────────────────────────────────────────── */
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
     /* ── Typography ───────────────────────────────────────────── */
     .display { font-family: var(--font-display); }
 
@@ -432,12 +431,15 @@
       letter-spacing: 0.08em;
       text-transform: uppercase;
       transition: color 0.2s;
+      display: flex; align-items: center;
+      min-height: 44px;
+      padding: 0 4px;
     }
     .nav-links a:hover { color: var(--text); }
     .nav-cta {
       background: var(--green);
       color: var(--bg);
-      padding: 8px 20px;
+      padding: 12px 20px;
       font-family: var(--font-display);
       font-weight: 700;
       font-size: 12px;
@@ -1196,7 +1198,7 @@
       .container { padding: 0 16px; }
       .showcase-header { padding: 0 16px; }
       .nav-cta { display: none; }
-      .lang-btn { padding: 7px 8px; font-size: 10px; }
+      .lang-btn { padding: 12px 10px; font-size: 10px; min-height: 44px; }
       .stat-num { font-size: 28px; }
       .feature-body { padding: 24px 20px; }
       .quest-card { padding: 24px 20px; }
@@ -1245,7 +1247,7 @@
       </div>
 
       <h1 class="hero-headline display">
-        build_better<br>
+        <span class="sr-only">AI Developer Cards — </span>build_better<br>
         <span class="accent">software</span>
         <span class="line2">with_AI</span>
       </h1>
@@ -1620,27 +1622,27 @@
 
       <div class="faq-list">
         <div class="faq-item reveal">
-          <p class="faq-q" data-i18n="faq.q1">I already use AI coding tools every day — what am I actually missing?</p>
-          <p class="faq-a" data-i18n="faq.a1">AI Developer Cards is a physical card deck and companion app created by Ingo Eichhorst and Ralf D. Mueller that teaches 45+ methods for AI-assisted software development. Organized into 9 structured learning quests, the deck covers methodologies from vibe prototyping and prompt engineering to multi-agent coding and AI software hardening. Developed from insights gathered across 100+ developer workshops, the cards give software engineers a tactile, reference-ready playbook for building better software with AI.</p>
+          <h3 class="faq-q" data-i18n="faq.q1">I already use AI coding tools every day — what am I actually missing?</h3>
+          <p class="faq-a" data-i18n="faq.a1">Most developers have mastered the basics: autocomplete, Q&amp;A, simple refactoring. What breaks down is knowing which method to reach for at each stage — when to vibe-prototype vs. harden production code, how to engineer context for consistent results, how to chain methods across a full workflow. AI Developer Cards map 45+ methods across 9 progression stages, distilled from 100+ workshops, so you always know the right move — not just the right prompt.</p>
         </div>
         <div class="faq-item reveal">
-          <p class="faq-q" data-i18n="faq.q2">What did running 100+ developer workshops reveal?</p>
-          <p class="faq-a" data-i18n="faq.a2">AI Developer Cards was created by Ingo Eichhorst and Ralf D. Mueller. Ingo is an AI architect, CTO, and engineering trainer who has delivered 100+ AI developer workshops across Europe and was a beta tester for GitHub Copilot and GPT-3 in 2021. Ralf is a software architect, creator of docToolchain and the arc42 template, co-host of Software-Architektur.TV, and a CPSA-A certified trainer at socreatory with 25+ years in software development.</p>
+          <h3 class="faq-q" data-i18n="faq.q2">What did running 100+ developer workshops reveal?</h3>
+          <p class="faq-a" data-i18n="faq.a2">A consistent pattern: developers kept reinventing the same mental models from scratch. After 100+ AI coding workshops across Europe, Ingo Eichhorst and Ralf D. Mueller noticed that the gap wasn't in AI capability — it was in structured methodology. Most teams got stuck cycling between basic autocomplete and ad-hoc prompting with no clear progression. That insight became the blueprint for the 9 quests and 45+ methods in the deck.</p>
         </div>
         <div class="faq-item reveal">
-          <p class="faq-q" data-i18n="faq.q3">What AI coding methods do the cards cover?</p>
+          <h3 class="faq-q" data-i18n="faq.q3">What AI coding methods do the cards cover?</h3>
           <p class="faq-a" data-i18n="faq.a3">The deck covers 45+ methods across 9 quests: vibe prototyping, greenfield MVP development, AI-enabled systems, production hardening, legacy modernization, agentic coding, multi-agent coding, reinforcement loops, and AI software hardening. Each method card includes specific prompts, patterns, and mental models for applying AI tools in real development scenarios.</p>
         </div>
         <div class="faq-item reveal">
-          <p class="faq-q" data-i18n="faq.q4">Who are AI Developer Cards for?</p>
+          <h3 class="faq-q" data-i18n="faq.q4">Who are AI Developer Cards for?</h3>
           <p class="faq-a" data-i18n="faq.a4">AI Developer Cards are designed for software engineers and developers who want to use AI tools effectively across the full software development lifecycle — from rapid prototyping to production hardening. They are especially useful for developers attending AI coding workshops, team leads introducing AI practices to their teams, and self-learners who want structured guidance beyond basic code completion.</p>
         </div>
         <div class="faq-item reveal">
-          <p class="faq-q" data-i18n="faq.q5">What is included in the card deck?</p>
+          <h3 class="faq-q" data-i18n="faq.q5">What is included in the card deck?</h3>
           <p class="faq-a" data-i18n="faq.a5">The physical card deck includes 9 quest cards and 45+ method cards in a premium oversized format. It comes with access to the companion app, which provides tutorial videos, learning games, extended prompts, and skill assessments to amplify every card.</p>
         </div>
         <div class="faq-item reveal">
-          <p class="faq-q" data-i18n="faq.q6">When will AI Developer Cards be available?</p>
+          <h3 class="faq-q" data-i18n="faq.q6">When will AI Developer Cards be available?</h3>
           <p class="faq-a" data-i18n="faq.a6">AI Developer Cards are currently in pre-launch. Join the waitlist to receive early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF.</p>
         </div>
       </div>
@@ -1885,6 +1887,7 @@
 
     // ── Desktop fan spread ───────────────────────────────────────
     function buildDeckSpread() {
+      if (window.innerWidth <= 900) return; // skip on mobile — scroll strip handles it
       const spread = document.getElementById('deckSpread');
       if (!spread) return;
       const n = CARDS.length;
