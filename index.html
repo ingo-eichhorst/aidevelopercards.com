@@ -7,19 +7,15 @@
   <meta name="description" content="AI Developer Cards is a tactile deck and companion app with quests, prompts, and methods to build, modernize, and ship software with AI." />
   <link rel="icon" href="favicon.ico" />
   <link rel="canonical" href="https://aidevelopercards.com/" />
-  <link rel="alternate" hreflang="en" href="https://aidevelopercards.com/" />
-  <link rel="alternate" hreflang="de" href="https://aidevelopercards.com/?lang=de" />
-  <link rel="alternate" hreflang="x-default" href="https://aidevelopercards.com/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="AI Developer Cards – Distilled Methods for Modern Software Engineers" />
   <meta property="og:description" content="AI Developer Cards is a tactile deck and companion app with quests, prompts, and methods to build, modernize, and ship software with AI." />
   <meta property="og:url" content="https://aidevelopercards.com/" />
   <meta property="og:image" content="https://aidevelopercards.com/images/hero.webp" />
   <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image:height" content="584" />
   <meta property="og:image:alt" content="AI Developer Cards — physical card deck for software engineers" />
   <meta property="og:locale" content="en_US" />
-  <meta property="og:locale:alternate" content="de_DE" />
   <meta property="og:site_name" content="AI Developer Cards" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AI Developer Cards – Distilled Methods for Modern Software Engineers" />
@@ -39,7 +35,7 @@
         "publisher": {
           "@id": "https://aidevelopercards.com/#organization"
         },
-        "inLanguage": ["en", "de"]
+        "inLanguage": "en"
       },
       {
         "@type": "Organization",
@@ -114,7 +110,7 @@
         "@id": "https://aidevelopercards.com/#webpage",
         "url": "https://aidevelopercards.com/",
         "name": "AI Developer Cards \u2013 Distilled Methods for Modern Software Engineers",
-        "dateModified": "2026-03-13",
+        "dateModified": "2026-03-28",
         "description": "AI Developer Cards is a tactile deck and companion app with quests, prompts, and methods to build, modernize, and ship software with AI.",
         "isPartOf": {
           "@id": "https://aidevelopercards.com/#website"
@@ -122,7 +118,7 @@
         "about": {
           "@id": "https://aidevelopercards.com/#product"
         },
-        "inLanguage": ["en", "de"]
+        "inLanguage": "en"
       },
       {
         "@type": "Product",
@@ -154,18 +150,6 @@
             "@id": "https://aidevelopercards.com/#organization"
           }
         }
-      },
-      {
-        "@type": "BreadcrumbList",
-        "@id": "https://aidevelopercards.com/#breadcrumb",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://aidevelopercards.com/"
-          }
-        ]
       },
       {
         "@type": "FAQPage",
@@ -234,6 +218,8 @@
   <script src="https://cdn.counter.dev/script.js" data-id="2d845c2a-ed61-4410-8850-e6339766176f" data-utcoffset="1" defer></script>
 
   <script>
+    // Enable JS-dependent animations (content stays visible for non-JS crawlers)
+    document.documentElement.classList.add('has-js');
     // Apply theme early to prevent flash of wrong theme
     (function() {
       var saved = localStorage.getItem('theme');
@@ -244,11 +230,10 @@
       }
     })();
     // Apply language early to prevent flash of wrong language
+    // Only use German if user explicitly chose it (not auto-detected),
+    // to avoid contradicting English meta tags for crawlers
     (function() {
-      var saved = localStorage.getItem('lang');
-      if (!saved) {
-        saved = (navigator.language || navigator.userLanguage || 'en').substring(0, 2) === 'de' ? 'de' : 'en';
-      }
+      var saved = localStorage.getItem('lang') || 'en';
       document.documentElement.lang = saved;
       document.documentElement.setAttribute('data-lang', saved);
     })();
@@ -1123,7 +1108,7 @@
     }
 
     /* ── About / Definition ───────────────────────────────────── */
-    #about { padding: 32px 0; border-bottom: 1px solid var(--border1); }
+    #about { padding: 32px 0; border-bottom: 1px solid var(--border); }
     .about-def { font-size: clamp(13px, 1.6vw, 15px); line-height: 1.8; color: var(--text-dim); max-width: 760px; }
 
     /* ── Author links ─────────────────────────────────────────── */
@@ -1139,8 +1124,8 @@
     /* ── FAQ ──────────────────────────────────────────────────── */
     #faq { padding: 96px 0; }
     .faq-list { display: flex; flex-direction: column; gap: 0; }
-    .faq-item { border-top: 1px solid var(--border1); padding: 28px 0; }
-    .faq-item:last-child { border-bottom: 1px solid var(--border1); }
+    .faq-item { border-top: 1px solid var(--border); padding: 28px 0; }
+    .faq-item:last-child { border-bottom: 1px solid var(--border); }
     .faq-q {
       font-size: clamp(14px, 1.8vw, 16px); font-weight: 700;
       color: var(--text); margin-bottom: 12px; line-height: 1.4;
@@ -1183,19 +1168,25 @@
     .footer-links a:hover { color: var(--text-dim); }
 
     /* ── Intersection animations ──────────────────────────────── */
+    /* Visible by default so content is indexable by crawlers that don't scroll */
     .reveal {
+      opacity: 1;
+      transform: none;
+    }
+    /* Only animate when JS has loaded */
+    html.has-js .reveal {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .reveal.visible {
+    html.has-js .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    html.has-js .reveal-delay-1 { transition-delay: 0.1s; }
+    html.has-js .reveal-delay-2 { transition-delay: 0.2s; }
+    html.has-js .reveal-delay-3 { transition-delay: 0.3s; }
+    html.has-js .reveal-delay-4 { transition-delay: 0.4s; }
 
     /* ── Scrollbar ────────────────────────────────────────────── */
     ::-webkit-scrollbar { width: 6px; }
@@ -1336,9 +1327,9 @@
 </head>
 <body>
 
-  <!-- Static content for crawlers that don't execute JavaScript -->
+  <!-- Fallback content for users/crawlers without JavaScript -->
   <noscript>
-    <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+    <div>
       <h1>AI Developer Cards — build better software with AI</h1>
       <p>AI Developer Cards is a physical card deck and companion app created by Ingo Eichhorst and Ralf D. Mueller that teaches 45+ methods for AI-assisted software development across 9 structured learning quests. Developed from insights gathered across 100+ developer workshops, the cards cover methodologies from vibe prototyping and prompt engineering to multi-agent coding and AI software hardening.</p>
       <h2>9 Quests, 45+ Methods</h2>
@@ -1692,7 +1683,7 @@
         $ join_waitlist --early-access
       </a>
       <p class="cta-note reveal" data-i18n-html="cta.note">
-        By joining, you agree to our <a href="privacy.html" data-privacy>Privacy Policy</a>. Data collected via Google Forms.
+        By joining, you agree to our <a href="#" data-privacy>Privacy Policy</a>. Data collected via Google Forms.
       </p>
     </div>
   </section>
@@ -1833,7 +1824,7 @@
         All rights reserved.
       </p>
       <ul class="footer-links">
-        <li><a href="privacy.html" data-privacy data-i18n="footer.privacy">./privacy</a></li>
+        <li><a href="#" data-privacy data-i18n="footer.privacy">./privacy</a></li>
         <li><a href="#" data-impressum data-i18n="footer.impressum">./impressum</a></li>
       </ul>
     </div>
@@ -1910,7 +1901,7 @@
         'cta.perk2': 'Beta access to the companion app',
         'cta.perk3': 'Exclusive preview PDF',
         'cta.perk4': 'No spam \u2014 unsubscribe any time',
-        'cta.note': 'By joining, you agree to our <a href="privacy.html" data-privacy>Privacy Policy</a>. Data collected via Google Forms.',
+        'cta.note': 'By joining, you agree to our <a href="#" data-privacy>Privacy Policy</a>. Data collected via Google Forms.',
         'author1.headline': '15+ years.<br>One playbook.',
         'author1.bio': 'AI architect, CTO, and engineering trainer at a leading hyperscaler. Beta tester for GitHub Copilot and GPT-3 in 2021 \u2014 it clicked immediately. After training thousands of developers across Europe and collecting countless feedback loops, I distilled what actually moves the needle. These cards are the playbook I wish I had from day one.',
         'author1.cred1': '100+ AI developer workshops delivered across Europe',
@@ -1986,7 +1977,7 @@
         'cta.perk2': 'Beta-Zugang zur Companion-App',
         'cta.perk3': 'Exklusives Preview-PDF',
         'cta.perk4': 'Kein Spam \u2014 jederzeit abbestellbar',
-        'cta.note': 'Mit der Anmeldung stimmst du unserer <a href="privacy.html" data-privacy>Datenschutzerkl\u00e4rung</a> zu. Daten werden \u00fcber Google Forms erhoben.',
+        'cta.note': 'Mit der Anmeldung stimmst du unserer <a href="#" data-privacy>Datenschutzerkl\u00e4rung</a> zu. Daten werden \u00fcber Google Forms erhoben.',
         'author1.headline': '15+ Jahre.<br>Ein Playbook.',
         'author1.bio': 'KI-Architekt, CTO und Engineering-Trainer bei einem f\u00fchrenden Hyperscaler. Beta-Tester f\u00fcr GitHub Copilot und GPT-3 seit 2021 \u2014 es hat sofort Klick gemacht. Nach dem Training von tausenden Entwicklern in ganz Europa und unz\u00e4hligen Feedback-Schleifen habe ich destilliert, was wirklich den Unterschied macht. Diese Karten sind das Playbook, das ich mir von Anfang an gew\u00fcnscht h\u00e4tte.',
         'author1.cred1': '100+ KI-Entwickler-Workshops in ganz Europa',
@@ -2047,12 +2038,10 @@
       });
     }
 
-    // Determine initial language (URL param takes priority, then localStorage, then browser)
+    // Determine initial language (URL param takes priority, then localStorage, default English)
+    // No browser auto-detection — prevents lang="de" contradicting English meta tags for crawlers
     var urlLang = new URLSearchParams(window.location.search).get('lang');
-    var initialLang = urlLang || localStorage.getItem('lang');
-    if (!initialLang) {
-      initialLang = (navigator.language || navigator.userLanguage || 'en').substring(0, 2) === 'de' ? 'de' : 'en';
-    }
+    var initialLang = urlLang || localStorage.getItem('lang') || 'en';
     setLanguage(initialLang);
 
     // Language switch buttons
@@ -2176,6 +2165,14 @@
     document.querySelectorAll('#hero .reveal').forEach(el => {
       el.classList.add('visible');
     });
+
+    // Ensure all reveal elements become visible after 1s for crawlers
+    // that execute JS but don't scroll (e.g. Google's WRS)
+    setTimeout(function() {
+      document.querySelectorAll('.reveal:not(.visible)').forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }, 1000);
 
     // ── Theme toggle ───────────────────────────────────────────
     const themeToggle = document.getElementById('themeToggle');
