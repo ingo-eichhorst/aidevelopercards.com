@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- AI Developer Cards: generated app redirect -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>AI Developer Cards</title><link rel="canonical" href="https://app.aidevelopercards.com/app/">
+<style>body{margin:0;background:#171823;color:#f2f2ed;font:16px/1.6 system-ui,sans-serif}main{max-width:620px;padding:48px 24px;margin:auto}h1{font-size:30px;line-height:1.2}p{margin:20px 0}a,button{display:inline-block;font:inherit;padding:12px 20px;margin:8px 12px 8px 0;border:1px solid #b7ff39;background:#b7ff39;color:#171823;text-decoration:none;cursor:pointer}button{background:transparent;color:#b7ff39}[hidden]{display:none!important}a:focus-visible,button:focus-visible{outline:3px solid white;outline-offset:4px}</style></head>
+<body><main><p>AI DEVELOPER CARDS</p><h1 id="title">The companion app has moved.</h1><p id="message">Open the app at its new address.</p><p id="progress" hidden></p><button id="export" type="button" hidden>Export progress</button><a id="continue" href="https://app.aidevelopercards.com/app/">Open app →</a><p id="saved" role="status"></p></main>
+<script>
+(function () {
+  var de = navigator.language.toLowerCase().startsWith('de');
+  var target = "https://app.aidevelopercards.com/app/" + location.search + location.hash;
+  var link = document.getElementById('continue');
+  link.href = target;
+  var saved = null, migrated = false;
+  try { saved = JSON.parse(localStorage.getItem("adc.companion.v1")); migrated = localStorage.getItem('adc.companion.moved.v1') === 'yes'; } catch (_) {}
+  var hasProgress = saved && saved.version === 1 && ['read', 'completed', 'chapters', 'exercises', 'notes'].some(function (key) {
+    return saved[key] && Object.values(saved[key]).some(function (value) { return typeof value === 'string' ? value.trim().length > 0 : !!value; });
+  });
+  if (!hasProgress || (migrated && !new URLSearchParams(location.search).has('migration'))) { location.replace(target); return; }
+  document.documentElement.lang = de ? 'de' : 'en';
+  document.getElementById('title').textContent = de ? 'Die Companion App ist umgezogen.' : 'The companion app has moved.';
+  document.getElementById('message').textContent = de ? 'Du hast hier bereits Fortschritt oder Notizen gespeichert. Nimm diese Daten mit zur neuen App.' : 'You have progress or notes saved here. Take this data with you to the new app.';
+  var progress = document.getElementById('progress'); progress.hidden = false;
+  progress.textContent = de ? 'Exportiere zuerst deinen Fortschritt. Öffne danach die neue App. Melde dich an und wähle in den Einstellungen „Fortschritt importieren“.' : 'First export your progress. Then open the new app. Sign in and select “Import progress” in settings.';
+  var button = document.getElementById('export'); button.hidden = false; button.textContent = de ? 'Fortschritt exportieren' : 'Export progress';
+  link.textContent = de ? 'Zur App →' : 'Open app →';
+  button.addEventListener('click', function () {
+    var blob = new Blob([JSON.stringify({ format: 'adc-companion-progress', savedAt: new Date().toISOString(), state: saved }, null, 2)], { type: 'application/json' });
+    var url = URL.createObjectURL(blob), download = document.createElement('a');
+    download.href = url; download.download = 'ai-developer-cards-progress-' + new Date().toISOString().slice(0, 10) + '.json'; download.click();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    document.getElementById('saved').textContent = de ? 'Datei gespeichert. Du kannst jetzt die neue App öffnen.' : 'File saved. You can now open the new app.';
+  });
+  link.addEventListener('click', function () { try { localStorage.setItem('adc.companion.moved.v1', 'yes'); } catch (_) {} });
+})();
+</script></body></html>

@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+Sitemap: https://aidevelopercards.com/sitemap.xml
+IndexNow-Key: f47ac10b58cc4372a5670e02b2c3d479
