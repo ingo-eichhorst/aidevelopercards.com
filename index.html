@@ -142,10 +142,15 @@
         },
         "offers": {
           "@type": "Offer",
-          "url": "https://aidevelopercards.com/",
+          "url": "https://app.aidevelopercards.com/app/?view=payment",
           "priceCurrency": "EUR",
-          "price": "0",
-          "availability": "https://schema.org/PreOrder",
+          "price": "79.00",
+          "availability": "https://schema.org/InStock",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": { "@type": "MonetaryAmount", "value": "6.90", "currency": "EUR" },
+            "shippingDestination": { "@type": "DefinedRegion", "addressCountry": "DE" }
+          },
           "priceValidUntil": "2026-12-31",
           "seller": {
             "@id": "https://aidevelopercards.com/#organization"
@@ -198,10 +203,10 @@
           },
           {
             "@type": "Question",
-            "name": "When will AI Developer Cards be available?",
+            "name": "What does the deck cost and where do you deliver?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "AI Developer Cards are currently in pre-launch. Waitlist members receive 48-hour early access before any public announcement. Join to get early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF as soon as the deck ships."
+              "text": "The deck is available now in German or English. One box costs €79, final price. No VAT is shown because we are a small business under § 19 UStG. DHL shipping costs €6.90 once per order, and you can order 1 to 9 decks of the same language at a time. We deliver to addresses in Germany only, excluding Heligoland and Büsingen. In stock: dispatch no later than 7 working days after payment is received, delivery no later than 11 working days after payment is received. Companion app access is included for the account you buy with."
             }
           }
         ]
@@ -215,7 +220,7 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.counter.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://counter.dev https://t.counter.dev https://forms.gle; frame-src https://docs.google.com https://forms.gle;" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.counter.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://counter.dev https://t.counter.dev;" />
   <script src="https://cdn.counter.dev/script.js" data-id="2d845c2a-ed61-4410-8850-e6339766176f" data-utcoffset="1" defer></script>
 
   <script>
@@ -1394,8 +1399,8 @@
       <p>The cards are for developers, team leads and trainers. Use the methods on your own coding tasks, establish shared practices in your team or lead a workshop. The nine quests guide you from your first prototype to production. Learn with the PRESS START story in the companion app or look up a method for your current problem.</p>
       <h3>What is included in the card deck?</h3>
       <p>The physical deck contains nine quest cards and 45+ method cards. The companion app includes the complete PRESS START story, the latest card versions, articles, references, learning exercises and prompts you can copy. Start with the story or look up a method directly.</p>
-      <h3>When will AI Developer Cards be available?</h3>
-      <p>AI Developer Cards are currently in pre-launch. Waitlist members will receive early access before the public launch. Sign up at https://aidevelopercards.com/ to join the waitlist and receive early-bird pricing.</p>
+      <h3>What does the deck cost and where do you deliver?</h3>
+      <p>The deck is available now in German or English. One box costs €79, final price. No VAT is shown because we are a small business under § 19 UStG. DHL shipping costs €6.90 once per order, and you can order 1 to 9 decks of the same language at a time. We deliver to addresses in Germany only, excluding Heligoland and Büsingen. In stock: dispatch no later than 7 working days after payment is received, delivery no later than 11 working days after payment is received. Companion app access is included for the account you buy with. Buy at https://app.aidevelopercards.com/app/?view=payment</p>
     </div>
   </noscript>
 
@@ -1423,8 +1428,8 @@
           <span class="icon-sun">&#9788;</span>
           <span class="icon-moon">&#9790;</span>
         </button>
-        <a href="https://forms.gle/LMWPBnCgWmkw1Wav5" target="_blank" rel="noopener noreferrer" class="nav-cta" data-i18n="nav.cta">
-          join waitlist
+        <a href="https://app.aidevelopercards.com/app/?view=payment" class="nav-cta" data-i18n="nav.cta">
+          Buy now – €79
         </a>
         <button class="nav-hamburger" id="navHamburger" aria-label="Open navigation menu" aria-expanded="false">&#9776;</button>
       </div>
@@ -1436,7 +1441,7 @@
         <li><a href="#quests" data-i18n="nav.quests">Quests</a></li>
         <li><a href="#author" data-i18n="nav.authors">Authors</a></li>
         <li><a href="/app" data-i18n="nav.app">App</a></li>
-        <li><a href="https://forms.gle/LMWPBnCgWmkw1Wav5" target="_blank" rel="noopener noreferrer" data-i18n="nav.cta">join waitlist</a></li>
+        <li><a href="https://app.aidevelopercards.com/app/?view=payment" data-i18n="nav.cta">Buy now – €79</a></li>
       </ul>
     </nav>
   </header>
@@ -1465,13 +1470,14 @@
       <p class="hero-body" data-i18n-html="hero.body"><strong>For developers, team leads and trainers.</strong><br>9 quests and 45+ methods for building, modernizing and operating software with AI. Learn to give coding agents clear tasks and check their results.</p>
 
       <div class="hero-actions">
-        <a href="https://forms.gle/LMWPBnCgWmkw1Wav5" target="_blank" rel="noopener noreferrer" class="btn-primary display">
-          $ join_waitlist --early-access
+        <a href="https://app.aidevelopercards.com/app/?view=payment" class="btn-primary display" data-i18n="cta.button">
+          Buy now – €79
         </a>
         <a href="#showcase" class="btn-ghost">
           ls ./cards <span class="arrow">&rarr;</span>
         </a>
       </div>
+      <p class="cta-note" data-i18n="hero.price">€79 per box, final price, plus €6.90 DHL shipping per order. Delivery within Germany only.</p>
 
       </div>
 
@@ -1709,25 +1715,25 @@
     <div class="cta-glow"></div>
     <div class="container cta-content">
       <div class="section-label reveal" style="justify-content: center;">
-        <span class="section-num">&gt;</span> ./waitlist.sh --register
+        <span class="section-num">&gt;</span> ./checkout.sh --deck
       </div>
       <h2 class="cta-headline display reveal" data-i18n-html="cta.headline">
-        Be first <span class="ghost">in line.</span>
+        Get your <span class="ghost">deck.</span>
       </h2>
       <p class="cta-sub reveal" data-i18n="cta.sub">
-        Early-bird pricing, beta app access, and an exclusive preview PDF — no spam, unsubscribe any time.
+        €79 per box, final price. No VAT is shown (small business under § 19 UStG). DHL shipping €6.90 once per order, 1 to 9 decks per order.
       </p>
       <div class="cta-perks reveal">
-        <span class="cta-perk" data-i18n="cta.perk1">Early-bird pricing on the physical deck</span>
-        <span class="cta-perk" data-i18n="cta.perk2">Beta access to the companion app</span>
-        <span class="cta-perk" data-i18n="cta.perk3">Exclusive preview PDF</span>
-        <span class="cta-perk" data-i18n="cta.perk4">No spam — unsubscribe any time</span>
+        <span class="cta-perk" data-i18n="cta.perk1">German or English edition, 56 cards in A6</span>
+        <span class="cta-perk" data-i18n="cta.perk2">Companion app access for your account</span>
+        <span class="cta-perk" data-i18n="cta.perk3">In stock — dispatch no later than 7 working days after payment</span>
+        <span class="cta-perk" data-i18n="cta.perk4">Delivery to addresses in Germany only</span>
       </div>
-      <a href="https://forms.gle/LMWPBnCgWmkw1Wav5" target="_blank" rel="noopener noreferrer" class="btn-primary display reveal" style="font-size: 15px; padding: 18px 48px;">
-        $ join_waitlist --early-access
+      <a href="https://app.aidevelopercards.com/app/?view=payment" class="btn-primary display reveal" style="font-size: 15px; padding: 18px 48px;" data-i18n="cta.button">
+        Buy now – €79
       </a>
       <p class="cta-note reveal" data-i18n-html="cta.note">
-        By joining, you agree to our <a href="#" data-privacy>Privacy Policy</a>. Data collected via Google Forms.
+        Our <a href="https://app.aidevelopercards.com/legal/kaufbedingungen">purchase terms</a> (German) and <a href="https://app.aidevelopercards.com/legal/widerruf">withdrawal notice</a> apply. Payment via Stripe.
       </p>
     </div>
   </section>
@@ -1852,8 +1858,8 @@
           <p class="faq-a" data-i18n="faq.a5">The physical deck contains nine quest cards and 45+ method cards. The companion app includes the complete PRESS START story, the latest card versions, articles, references, learning exercises and prompts you can copy. Start with the story or look up a method directly.</p>
         </div>
         <div class="faq-item reveal">
-          <h3 class="faq-q" data-i18n="faq.q6">When will AI Developer Cards be available?</h3>
-          <p class="faq-a" data-i18n="faq.a6">AI Developer Cards are currently in pre-launch. Waitlist members receive 48-hour early access before any public announcement. Join above to get early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF as soon as the deck ships.</p>
+          <h3 class="faq-q" data-i18n="faq.q6">What does the deck cost and where do you deliver?</h3>
+          <p class="faq-a" data-i18n="faq.a6">The deck is available now in German or English. One box costs €79, final price. No VAT is shown because we are a small business under § 19 UStG. DHL shipping costs €6.90 once per order, and you can order 1 to 9 decks of the same language at a time. We deliver to addresses in Germany only, excluding Heligoland and Büsingen. In stock: dispatch no later than 7 working days after payment is received, delivery no later than 11 working days after payment is received. Companion app access is included for the account you buy with.</p>
         </div>
       </div>
     </div>
@@ -1905,7 +1911,9 @@
         'nav.quests': 'Quests',
         'nav.authors': 'Authors',
         'nav.app': 'App',
-        'nav.cta': 'join waitlist',
+        'nav.cta': 'Buy now \u2013 \u20ac79',
+        'cta.button': 'Buy now \u2013 \u20ac79',
+        'hero.price': '\u20ac79 per box, final price, plus \u20ac6.90 DHL shipping per order. Delivery within Germany only.',
         'hero.body': "<strong>For developers, team leads and trainers.</strong><br>9 quests and 45+ methods for building, modernizing and operating software with AI. Learn to give coding agents clear tasks and check their results.",
         'hero.stat.quests': 'quests',
         'hero.stat.methods': 'methods',
@@ -1942,13 +1950,13 @@
         'quests.q7.desc': "Use previous agent runs and measured feedback to improve rules, skills, and checks.",
         'quests.q8.count': '5 methods',
         'quests.q8.desc': "Limit dangerous agent actions. Prepare controls, audits, incident response, and safe changes.",
-        'cta.headline': 'Be first <span class="ghost">in line.</span>',
-        'cta.sub': 'Early-bird pricing, beta app access, and an exclusive preview PDF \u2014 no spam, unsubscribe any time.',
-        'cta.perk1': 'Early-bird pricing on the physical deck',
-        'cta.perk2': 'Beta access to the companion app',
-        'cta.perk3': 'Exclusive preview PDF',
-        'cta.perk4': 'No spam \u2014 unsubscribe any time',
-        'cta.note': 'By joining, you agree to our <a href="#" data-privacy>Privacy Policy</a>. Data collected via Google Forms.',
+        'cta.headline': 'Get your <span class="ghost">deck.</span>',
+        'cta.sub': '\u20ac79 per box, final price. No VAT is shown (small business under \u00a7 19 UStG). DHL shipping \u20ac6.90 once per order, 1 to 9 decks per order.',
+        'cta.perk1': 'German or English edition, 56 cards in A6',
+        'cta.perk2': 'Companion app access for your account',
+        'cta.perk3': 'In stock \u2014 dispatch no later than 7 working days after payment',
+        'cta.perk4': 'Delivery to addresses in Germany only',
+        'cta.note': 'Our <a href="https://app.aidevelopercards.com/legal/kaufbedingungen">purchase terms</a> (German) and <a href="https://app.aidevelopercards.com/legal/widerruf">withdrawal notice</a> apply. Payment via Stripe.',
         'author1.headline': '15+ years.<br>One playbook.',
         'author1.bio': 'AI architect, CTO, and engineering trainer at a leading hyperscaler. Beta tester for GitHub Copilot and GPT-3 in 2021 \u2014 it clicked immediately. After training thousands of developers across Europe and collecting countless feedback loops, I distilled what actually moves the needle. These cards are the playbook I wish I had from day one.',
         'author1.cred1': '100+ AI developer workshops delivered across Europe',
@@ -1974,8 +1982,8 @@
         'faq.a4': "The cards are for developers, team leads and trainers. Use the methods on your own coding tasks, establish shared practices in your team or lead a workshop. The nine quests guide you from your first prototype to production. Learn with the PRESS START story in the companion app or look up a method for your current problem.",
         'faq.q5': 'What is included in the card deck?',
         'faq.a5': "The physical deck contains nine quest cards and 45+ method cards. The companion app includes the complete PRESS START story, the latest card versions, articles, references, learning exercises and prompts you can copy. Start with the story or look up a method directly.",
-        'faq.q6': 'When will AI Developer Cards be available?',
-        'faq.a6': 'AI Developer Cards are currently in pre-launch. Waitlist members receive 48-hour early access before any public announcement. Join above to get early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF as soon as the deck ships.'
+        'faq.q6': 'What does the deck cost and where do you deliver?',
+        'faq.a6': 'The deck is available now in German or English. One box costs \u20ac79, final price. No VAT is shown because we are a small business under \u00a7 19 UStG. DHL shipping costs \u20ac6.90 once per order, and you can order 1 to 9 decks of the same language at a time. We deliver to addresses in Germany only, excluding Heligoland and B\u00fcsingen. In stock: dispatch no later than 7 working days after payment is received, delivery no later than 11 working days after payment is received. Companion app access is included for the account you buy with.'
       },
       de: {
         '_title': 'AI Developer Cards \u2013 Destillierte Methoden f\u00fcr moderne Software-Engineers',
@@ -1984,7 +1992,9 @@
         'nav.quests': 'Quests',
         'nav.authors': 'Autoren',
         'nav.app': 'App',
-        'nav.cta': 'Warteliste',
+        'nav.cta': 'Jetzt kaufen \u2013 79 \u20ac',
+        'cta.button': 'Jetzt kaufen \u2013 79 \u20ac',
+        'hero.price': '79 \u20ac je Box (Endpreis), zzgl. 6,90 \u20ac DHL-Versand pro Bestellung. Lieferung nur innerhalb Deutschlands.',
         'hero.body': "<strong>Für Entwickler, Team Leads und Trainer.</strong><br>9 Quests und 45+ Methoden helfen dir, Software mit KI zu bauen, zu modernisieren und zu betreiben. Du lernst, Coding-Agenten klare Aufgaben zu geben und ihre Ergebnisse zu prüfen.",
         'hero.stat.quests': 'Quests',
         'hero.stat.methods': 'Methoden',
@@ -2021,13 +2031,13 @@
         'quests.q7.desc': "Nutze frühere Agentenläufe und messbare Rückmeldungen, um Regeln, Skills und Prüfungen zu verbessern.",
         'quests.q8.count': '5 Methoden',
         'quests.q8.desc': "Begrenze gefährliche Agentenaktionen. Bereite Kontrollen, Audits, Störungsreaktion und sichere Änderungen vor.",
-        'cta.headline': 'Sei ganz vorne <span class="ghost">dabei.</span>',
-        'cta.sub': 'Early-Bird-Preise, Beta-Zugang zur App und ein exklusives Preview-PDF \u2014 kein Spam, jederzeit abbestellbar.',
-        'cta.perk1': 'Early-Bird-Preise f\u00fcr das physische Deck',
-        'cta.perk2': 'Beta-Zugang zur Companion-App',
-        'cta.perk3': 'Exklusives Preview-PDF',
-        'cta.perk4': 'Kein Spam \u2014 jederzeit abbestellbar',
-        'cta.note': 'Mit der Anmeldung stimmst du unserer <a href="#" data-privacy>Datenschutzerkl\u00e4rung</a> zu. Daten werden \u00fcber Google Forms erhoben.',
+        'cta.headline': 'Hol dir <span class="ghost">dein Deck.</span>',
+        'cta.sub': '79 \u20ac je Box, Endpreis. Keine Umsatzsteuer ausgewiesen (Kleinunternehmer nach \u00a7 19 UStG). DHL-Versand 6,90 \u20ac einmal pro Bestellung, 1 bis 9 Decks pro Bestellung.',
+        'cta.perk1': 'Deutsche oder englische Ausgabe, 56 Karten in A6',
+        'cta.perk2': 'App-Zugang f\u00fcr dein Konto',
+        'cta.perk3': 'Auf Lager \u2014 Versand sp\u00e4testens 7 Arbeitstage nach Zahlungseingang',
+        'cta.perk4': 'Lieferung nur an Adressen in Deutschland',
+        'cta.note': 'Es gelten unsere <a href="https://app.aidevelopercards.com/legal/kaufbedingungen">Kaufbedingungen</a> und die <a href="https://app.aidevelopercards.com/legal/widerruf">Widerrufsbelehrung</a>. Bezahlung \u00fcber Stripe.',
         'author1.headline': '15+ Jahre.<br>Ein Playbook.',
         'author1.bio': 'KI-Architekt, CTO und Engineering-Trainer bei einem f\u00fchrenden Hyperscaler. Beta-Tester f\u00fcr GitHub Copilot und GPT-3 seit 2021 \u2014 es hat sofort Klick gemacht. Nach dem Training von tausenden Entwicklern in ganz Europa und unz\u00e4hligen Feedback-Schleifen habe ich destilliert, was wirklich den Unterschied macht. Diese Karten sind das Playbook, das ich mir von Anfang an gew\u00fcnscht h\u00e4tte.',
         'author1.cred1': '100+ KI-Entwickler-Workshops in ganz Europa',
@@ -2053,8 +2063,8 @@
         'faq.a4': "Die Karten richten sich an Entwickler, Team Leads und Trainer. Wende die Methoden auf eigene Coding-Aufgaben an, schaffe gemeinsame Arbeitsweisen im Team oder leite einen Workshop. Die neun Quests begleiten dich vom ersten Prototyp bis zum Produktionsbetrieb. Lerne mit der Story PRESS START in der Companion App oder schlage eine Methode für dein aktuelles Problem nach.",
         'faq.q5': 'Was ist im Kartendeck enthalten?',
         'faq.a5': "Das physische Deck enthält neun Questkarten und 45+ Methodenkarten. In der Companion App findest du die ganze Geschichte PRESS START, aktuelle Kartenversionen, Artikel, Quellen, Lernübungen und kopierbare Prompts. Starte mit der Story oder schlage eine Methode direkt nach.",
-        'faq.q6': 'Wann sind AI Developer Cards verf\u00fcgbar?',
-        'faq.a6': 'AI Developer Cards befinden sich derzeit in der Vorver\u00f6ffentlichungsphase. Trag dich in die Warteliste ein und erhalte Early-Bird-Preise f\u00fcr das physische Deck, Beta-Zugang zur Companion-App und ein exklusives Vorschau-PDF.'
+        'faq.q6': 'Was kostet das Deck und wohin liefert ihr?',
+        'faq.a6': 'Das Deck ist jetzt auf Deutsch oder Englisch erh\u00e4ltlich. Eine Box kostet 79 \u20ac (Endpreis). Als Kleinunternehmer nach \u00a7 19 UStG weisen wir keine Umsatzsteuer aus. Der DHL-Versand kostet einmal pro Bestellung 6,90 \u20ac, pro Bestellung sind 1 bis 9 Decks derselben Sprache m\u00f6glich. Wir liefern nur an Adressen in Deutschland, nicht nach Helgoland und B\u00fcsingen. Auf Lager: Versand sp\u00e4testens 7 Arbeitstage nach Zahlungseingang, Lieferung sp\u00e4testens 11 Arbeitstage nach Zahlungseingang. Zum Kauf geh\u00f6rt der App-Zugang f\u00fcr das Konto, mit dem du kaufst.'
       }
     };
 
@@ -2246,19 +2256,17 @@
       <div class="pm-lang" data-lang-block="en">
         <p class="pm-label">&gt; cat privacy.txt</p>
         <h2 class="pm-title">Privacy Policy</h2>
-        <p class="pm-date">Last updated: 2026-10-17</p>
+        <p class="pm-date">Last updated: 2026-11-14</p>
         <h3>Information We Collect</h3>
-        <p>When you join our waitlist, we collect your email address through Google Forms to notify you about AI Developer Cards availability, updates, and early-bird pricing.</p>
-        <h3>How We Use Your Information</h3>
-        <p>Your email is used solely to send notifications about availability, early-bird pricing, and product updates. We do not sell or share it with third parties.</p>
+        <p>This website has no sign-up form. We no longer run a waitlist.</p>
+        <h3>Purchases</h3>
+        <p>Purchases take place in the companion app at app.aidevelopercards.com. Payment is processed by Stripe. How we process your data when you buy or withdraw is described in the <a href="https://app.aidevelopercards.com/legal/datenschutz" target="_blank" rel="noopener">purchase privacy notice</a> (German).</p>
         <h3>Analytics</h3>
         <p>We use <a href="https://counter.dev" target="_blank" rel="noopener">counter.dev</a> to understand how visitors use our site. counter.dev collects no personal data and sets no cookies. It is open-source (AGPL-v3), made in Berlin, and privacy-friendly by design.</p>
         <h3 data-auth0-privacy="en">Companion app: account and sign-in</h3>
         <p>We use Auth0 (Okta) for registration and sign-in. The Auth0 tenant is configured in region EU-2. Auth0 processes account details, access rights and technical sign-in data. The companion app does not receive your password. It uses session cookies to check your sign-in. Our IONOS VPS serves the content and media. We store progress, notes, reading and playback positions, and settings on our IONOS VPS. These records use an account identifier. The browser keeps an account-specific copy for pending changes. Encrypted backups are stored on our own Mac server. We retain 24 hourly, seven daily and four weekly recovery points. Resetting progress removes the current progress and notes from your account. Older backup copies expire with the backup retention schedule. You can request account deletion using the contact address below. See <a href="https://www.okta.com/legal/privacy-policy/" target="_blank" rel="noopener">Okta’s privacy policy</a>.</p>
-        <h3>Third-Party Services</h3>
-        <p>We use Google Forms. Your data is subject to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
         <h3>Your Rights</h3>
-        <p>Unsubscribe any time via the link in any email, or contact us to request data deletion.</p>
+        <p>You can contact us at any time to request access to, correction of or deletion of your data.</p>
         <h3>Contact</h3>
         <p><a href="mailto:privacy@betterbegreat.com">privacy@betterbegreat.com</a></p>
       </div>
@@ -2266,19 +2274,17 @@
       <div class="pm-lang" data-lang-block="de">
         <p class="pm-label">&gt; cat datenschutz.txt</p>
         <h2 class="pm-title">Datenschutzerklärung</h2>
-        <p class="pm-date">Letzte Aktualisierung: 17.10.2026</p>
+        <p class="pm-date">Letzte Aktualisierung: 14.11.2026</p>
         <h3>Erhobene Daten</h3>
-        <p>Wenn du dich in die Warteliste einträgst, erheben wir deine E-Mail-Adresse über Google Forms, um dich über Verfügbarkeit, Updates und Early-Bird-Preise zu informieren.</p>
-        <h3>Verwendung deiner Daten</h3>
-        <p>Deine E-Mail wird ausschließlich für Benachrichtigungen zu Verfügbarkeit, Early-Bird-Preisen und Produkt-Updates genutzt. Wir verkaufen oder teilen sie nicht mit Dritten.</p>
+        <p>Diese Website hat kein Anmeldeformular. Eine Warteliste führen wir nicht mehr.</p>
+        <h3>Kauf</h3>
+        <p>Gekauft wird in der Companion App unter app.aidevelopercards.com. Die Zahlung wickelt Stripe ab. Wie wir deine Daten bei Kauf und Widerruf verarbeiten, steht im <a href="https://app.aidevelopercards.com/legal/datenschutz" target="_blank" rel="noopener">Datenschutzhinweis zum Kauf</a>.</p>
         <h3>Analyse</h3>
         <p>Wir verwenden <a href="https://counter.dev" target="_blank" rel="noopener">counter.dev</a>, um zu verstehen, wie Besucher unsere Website nutzen. counter.dev erhebt keine personenbezogenen Daten und setzt keine Cookies. Es ist Open-Source (AGPL-v3), made in Berlin und von Grund auf datenschutzfreundlich.</p>
         <h3 data-auth0-privacy="de">Companion App: Konto und Anmeldung</h3>
         <p>Für Registrierung und Anmeldung nutzen wir Auth0 (Okta). Der Auth0-Tenant ist in der Region EU-2 eingerichtet. Auth0 verarbeitet Kontodaten, Zugriffsrechte und technische Anmeldedaten. Die Companion App erhält dein Passwort nicht. Sie verwendet Sitzungscookies, um die Anmeldung zu prüfen. Unser IONOS-VPS liefert Inhalte und Medien aus. Wir speichern Fortschritt, Notizen, Lese- und Wiedergabepositionen sowie Einstellungen auf unserem IONOS-VPS. Diese Daten sind einer Kontokennung zugeordnet. Der Browser hält eine eigene Kopie je Konto für noch nicht synchronisierte Änderungen. Verschlüsselte Backups liegen auf unserem eigenen Mac-Server. Wir behalten 24 stündliche, sieben tägliche und vier wöchentliche Wiederherstellungspunkte. Das Zurücksetzen des Fortschritts löscht den aktuellen Fortschritt und die Notizen aus deinem Konto. Ältere Sicherungskopien entfallen nach dem Backup-Zeitplan. Die Löschung deines Kontos kannst du über die unten genannte Kontaktadresse anfordern. Weitere Angaben findest du in <a href="https://www.okta.com/legal/privacy-policy/" target="_blank" rel="noopener">Oktas Datenschutzerklärung</a>.</p>
-        <h3>Drittanbieter</h3>
-        <p>Wir nutzen Google Forms. Deine Daten unterliegen der <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Datenschutzrichtlinie von Google</a>.</p>
         <h3>Deine Rechte</h3>
-        <p>Du kannst dich jederzeit über den Abmeldelink in unseren E-Mails abmelden oder uns zur Datenlöschung kontaktieren.</p>
+        <p>Du kannst uns jederzeit kontaktieren, um Auskunft, Berichtigung oder Löschung deiner Daten zu verlangen.</p>
         <h3>Kontakt</h3>
         <p><a href="mailto:privacy@betterbegreat.com">privacy@betterbegreat.com</a></p>
       </div>

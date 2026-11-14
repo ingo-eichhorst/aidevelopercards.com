@@ -12,7 +12,7 @@ AI Developer Cards teaches modern software engineers how to build, modernize, an
 - Insights distilled from 100+ developer workshops across Europe
 - Physical card deck in premium oversized format + companion app
 - Companion app includes tutorial videos, learning games, extended prompts, and skill assessments
-- Pre-launch; waitlist members receive 48-hour early access before public announcement
+- Available now: €79 per box (final price, no VAT shown under § 19 UStG), plus €6.90 DHL shipping per order; 1–9 decks of the same language per order; delivery to addresses in Germany only
 - Educational category: Software Development / AI-Assisted Engineering
 
 ## Topics Covered
@@ -54,13 +54,13 @@ A: AI Developer Cards are designed for software engineers and developers who wan
 **Q: What is included in the card deck?**
 A: The physical card deck includes 9 quest cards and 45+ method cards in a premium oversized format. It comes with access to the companion app, which provides tutorial videos, learning games, extended prompts, and skill assessments to amplify every card.
 
-**Q: When will AI Developer Cards be available?**
-A: AI Developer Cards are currently in pre-launch. Waitlist members receive 48-hour early access before any public announcement. Sign up at https://aidevelopercards.com/ for early-bird pricing on the physical deck, beta access to the companion app, and an exclusive preview PDF.
+**Q: What does the deck cost and where do you deliver?**
+A: The deck is available now in German or English. One box costs €79, final price. No VAT is shown because we are a small business under § 19 UStG. DHL shipping costs €6.90 once per order, and you can order 1 to 9 decks of the same language at a time. We deliver to addresses in Germany only, excluding Heligoland and Büsingen. In stock: dispatch no later than 7 working days after payment is received, delivery no later than 11 working days after payment is received. Companion app access is included for the account you buy with. Buy at https://app.aidevelopercards.com/app/?view=payment
 
 ## Links
 - Website: https://aidevelopercards.com
 - Company: https://betterbegreat.com
-- Waitlist: https://forms.gle/LMWPBnCgWmkw1Wav5
+- Buy: https://app.aidevelopercards.com/app/?view=payment
 
 ## License
 Content on this page is licensed under CC BY 4.0. Attribution: AI Developer Cards by Ingo Eichhorst and Ralf D. Mueller / Better Be Great (https://betterbegreat.com).
